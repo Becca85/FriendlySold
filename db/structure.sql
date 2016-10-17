@@ -1,8 +1,9 @@
 
 drop table if exists t_user;
 
-drop table if exists t_monney;
+drop table if exists t_money;
 
+drop table if exists t_group;
 
 create table t_money (
 
@@ -10,13 +11,13 @@ create table t_money (
 
     mon_montant DECIMAL not null,
 
-    mon_IDpayeur int not null,
+    mon_IDpayeur integer not null,
 
     mon_date Date not null,
 
-    mon_group varchar (20) not null, 
+    mon_group varchar(20) not null, 
 
-    mon_description varchar (100) not null,  
+    mon_description varchar(100) not null  
 	
    
 	
@@ -37,10 +38,11 @@ create table t_user (
 
 ) engine=innodb character set utf8 collate utf8_unicode_ci;
 
-create table t_concerné (
-	con_id integer not null primary key auto_increment,
-	mon_id integer not null ,
-	usr_id integer not null 
+
+
+create table t_group (
+    gro_id integer not null primary key auto_increment,
+    gro_Nom  varchar(30) not null   
     
 
 ) engine=innodb character set utf8 collate utf8_unicode_ci;
