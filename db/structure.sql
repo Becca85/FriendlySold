@@ -40,10 +40,3 @@ create table t_user (
 
 
 
-create table t_group (
-    gro_id integer not null primary key auto_increment,
-    gro_Nom  varchar(30) not null   
-    
-
-) engine=innodb character set utf8 collate utf8_unicode_ci;
-
