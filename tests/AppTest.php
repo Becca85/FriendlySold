@@ -31,9 +31,11 @@ class AppTest Extends WebTestCase{
 
     public function testUserGetColorName(){
         $dao = new UserDAO($this->db);
-        $result = $dao->find(1);
+        $result = $dao->getColorName(2);
         $this->assertTrue(count($result) == 1);
     }
+
+
 
     /**
      * {@inheritDoc}
