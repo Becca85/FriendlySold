@@ -30,21 +30,27 @@ class UserDAO extends DAO
         foreach ($result as $row) {
             $id = $row['usr_id_groupe'];
             $di = $row['usr_name'];
-            $tableau_db[$id,$di] = $this -> buildDomainObject($row);
+            $tableau_db[$id+$di] = $this -> buildDomainObject($row);
         }
         return $tableau_db;
     }
 
     public function getGroupDAO(){
         //TODO
+        return $this->groupDAO;
     }
 
     public function setGroupDAO(){
         //TODO
     }
 
-    public function get($id){
-        //TODO
+    public function find($id){
+        $db = "select * from t_user where usr_id=?";
+        $row = $this->getDb()->fetchAssoc($db, array($id));
+        if ($row)
+            return $this->buildDomainObject($row);
+        else
+            throw new \Exception("No user matching id " . $id);
     }
 
     public function getColorName($id){
