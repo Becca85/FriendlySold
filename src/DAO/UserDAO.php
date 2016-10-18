@@ -35,15 +35,6 @@ class UserDAO extends DAO
         return $tableau_db;
     }
 
-    public function getGroupDAO(){
-        //TODO
-        return $this->groupDAO;
-    }
-
-    public function setGroupDAO(){
-        //TODO
-    }
-
     public function find($id){
         $db = "select * from t_user where usr_id=?";
         $row = $this->getDb()->fetchAssoc($db, array($id));
@@ -57,11 +48,23 @@ class UserDAO extends DAO
         //TODO
     }
 
-    public function removeFromGroup($Groupid){
-        //TODO
-    }
     public function save(User,$user){
-        //TODO
+         $userData = array(
+            'usr_name' => $user->getUsername(),
+            'usr_salt' => $user->getSalt(),
+            'usr_password' => $user->getPassword(),
+            'usr_role' => $user->getRole()
+            );
+        if ($user->getId()) {
+            // The user has already been saved : update it
+            $this->getDb()->update('t_user', $userData, array('usr_id' => $user->getId()));
+        } else {
+            // The user has never been saved : insert it
+            $this->getDb()->insert('t_user', $userData);
+            // Get the id of the newly created user and set it on the entity.
+            $id = $this->getDb()->lastInsertId();
+            $user->setId($id);
+        }
     }
 
     public function delete($id){
