@@ -47,10 +47,16 @@ class UserDAO extends DAO
     }
 
     public function getColorName($id){
-        //TODO
+        $db = "SELECT * FROM t_user WHERE usr_id=?";
+       $row = $this->getDb()->fetchAssoc($db, array($color));
+        if ($row)
+            return $this->buildDomainObject($row);
+        else
+            throw new \Exception("No color for this user " . $id);
+        
     }
 
-    public function save(User,$user){
+    /*public function save(User,$user){
          $userData = array(
             'usr_name' => $user->getUsername(),
             'usr_salt' => $user->getSalt(),
@@ -71,7 +77,7 @@ class UserDAO extends DAO
 
     public function delete($id){
         //TODO
-    }
+    }*/
 
    /**
 

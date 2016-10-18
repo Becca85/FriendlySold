@@ -17,9 +17,23 @@ class AppTest Extends WebTestCase{
         $dao = new UserDAO($this->db);
         $result = $dao->findByGroup(1);
         $this->assertTrue(count($result) == 1);
-        var_dump($result);
+
     }
 
+
+
+    public function testUserFind(){
+        $dao = new UserDAO($this->db);
+        $result = $dao->find(1);
+        $this->assertTrue(count($result) == 1);
+    }
+
+
+    public function testUserGetColorName(){
+        $dao = new UserDAO($this->db);
+        $result = $dao->find(1);
+        $this->assertTrue(count($result) == 1);
+    }
 
     /**
      * {@inheritDoc}
