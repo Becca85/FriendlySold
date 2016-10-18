@@ -21,7 +21,7 @@
         },
 
         "autoload":{
-        "psr-4": {"MicroCMS\\": "src"}
+        "psr-4": {"FriendlySold\\": "src"}
         }
 
 

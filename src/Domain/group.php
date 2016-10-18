@@ -1,18 +1,18 @@
 <?php
+
 namespace FriendlySold\Domain;
 
-use Symfony\Component\Security\Core\User\UserInterface;
+
 
 /**
 * 
 */
-class User implements UserInterface
+class Group 
 {
 
 private $id;
-private $username;
-private $color;
-private $group;
+private $groupname;
+private $password;
 
 
 }
@@ -34,13 +34,13 @@ public function setId($id){
 
 
 /*ici on recupere username*/
-public function getUsername(){
+public function groupname(){
 
 
-	return $this->username;
+	return $this->grouname;
 }
 /*ici on definit ou redefinit username*/
-public function setUsername($username){
+public function setGroupname($username){
 
 
 	$this->username=$username;

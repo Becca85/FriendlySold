@@ -4,10 +4,10 @@
 namespace MicroCMS\DAO;
 
 
-use MicroCMS\Domain\Article;
+use MicroCMS\Domain\Money;
 
 
-class ArticleDAO extends DAO
+class MoneyDAO extends DAO
 
 {
 
