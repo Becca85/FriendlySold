@@ -54,12 +54,13 @@ class UserDAO extends DAO
         
     
 
-    /*public function save(User,$user){
+    public function save(User,$user){
          $userData = array(
             'usr_name' => $user->getUsername(),
-            'usr_salt' => $user->getSalt(),
-            'usr_password' => $user->getPassword(),
-            'usr_role' => $user->getRole()
+            'usr_id_groupe' => $user->getGroup(),
+            'usr_couleur' => $user->getColor()
+            
+            
             );
         if ($user->getId()) {
             // The user has already been saved : update it
@@ -74,8 +75,15 @@ class UserDAO extends DAO
     }
 
     public function delete($id){
-        //TODO
-    }*/
+        
+    $db = "DELETE FROM `t_user` WHERE `usr_id` = $id";
+      $this->getDb()->delete('t_user', array('usr_id' => $id));
+                //pour verifier les user ressgtant apres suppression
+            
+
+        }
+
+    }
 
    /**
 

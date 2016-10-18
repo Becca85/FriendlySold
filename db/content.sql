@@ -15,7 +15,7 @@ insert into t_user values
 insert into t_user values
 (2, 'tata', 1 ,'blue');
 insert into t_user values
-(3, 'tutu', 1 ,'pink');
+(3, 'tutu', 2 ,'pink');
 
 
 insert into t_money values
