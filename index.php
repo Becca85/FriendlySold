@@ -17,7 +17,7 @@ $app->run();
 
 ?>
 
-<!--<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>friendySold</title>
@@ -27,7 +27,7 @@ $app->run();
 <?php 
 
 		
-	/*print_r($tableau_db);	*/
+	echo($tableau_db);	
 
 ?>
 </body>

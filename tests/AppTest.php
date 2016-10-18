@@ -13,6 +13,12 @@ class AppTest Extends WebTestCase{
         $this->assertTrue(count($result) == 3);
     }
 
+    public function testUserFindByGroup(){
+        $dao = new UserDAO($this->db);
+        $result = $dao->findByGroup(1);
+        $this->assertTrue(count($result) == 1);
+    }
+
 
     /**
      * {@inheritDoc}
