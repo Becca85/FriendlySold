@@ -17,6 +17,7 @@ class AppTest Extends WebTestCase{
         $dao = new UserDAO($this->db);
         $result = $dao->findByGroup(1);
         $this->assertTrue(count($result) == 1);
+        var_dump($result);
     }
 
 

@@ -30,19 +30,12 @@ class UserDAO extends DAO
         foreach ($result as $row) {
             $id = $row['usr_id_groupe'];
             $di = $row['usr_name'];
-            $tableau_db[$id,$di] = $this -> buildDomainObject($row);
+            $tableau_db[$id+$di] = $this -> buildDomainObject($row);
         }
         return $tableau_db;
     }
 
-    public function getGroupDAO(){
-        //TODO
-    }
-
-    public function setGroupDAO(){
-        //TODO
-    }
-
+ /*
     public function get($id){
         //TODO
     }
@@ -60,7 +53,7 @@ class UserDAO extends DAO
 
     public function delete($id){
         //TODO
-    }
+    }*/
 
    /**
 
