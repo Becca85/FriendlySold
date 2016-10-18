@@ -5,12 +5,12 @@ use Silex\WebTestCase;
 use FriendlySold\DAO\UserDAO;
 
 class AppTest Extends WebTestCase{
-	private $db;
+    private $db;
 
-	public function testUserFindAll(){
-	    $dao = new UserDAO($this->db);
-	    $result = $dao->findAll();
-	    $this->assertTrue(count($result) == 3);
+    public function testUserFindAll(){
+        $dao = new UserDAO($this->db);
+        $result = $dao->findAll();
+        $this->assertTrue(count($result) == 3);
     }
 
 
@@ -20,7 +20,9 @@ class AppTest Extends WebTestCase{
     public function createApplication()
     {
         $app = new \Silex\Application();
-        $app->register(new Silex\Provider\DoctrineServiceProvider());
+        
+require __DIR__.'/../app/config/dev.php';
+        $app->register(new \Silex\Provider\DoctrineServiceProvider());
         $this->db = $app['db'];
         return $app;
     }

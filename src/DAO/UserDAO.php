@@ -10,7 +10,7 @@ use FriendlySold\Domain\User;
 class UserDAO extends DAO 
 {
 	public function findAll(){
-		$db= "SELECT * t_user order by usr_id_groupe";
+		$db= "SELECT * FROM t_user order by usr_id_groupe";
 		$result =  $this->getDb()->fetchAll($db);
 		//Convertir en tableau, l'objet que l'on recupère de la base de donnée
 		$tableau_db=array();
