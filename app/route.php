@@ -3,7 +3,7 @@
 
 	$app->get(
 		'/read/group/{group_id}/money',
-		'FriendlySold\Controller\APIControllerRead::getmoney'
+		'FriendlySold\Controller\ApiControllerRead::getmoney'
 	)->bind('read_depenses');
 
 	$app->get(
@@ -13,7 +13,7 @@
 //jefais getUsers Juliette <3 //
     $app->get(
 		'/read/group/{group_id}/group',
-		'FriendlySold\Controller\APIControllerRead::getGroups'
+		'FriendlySold\Controller\ApiControllerRead::getGroups'
 	)->bind('read_groups');
 
 	$app->post(

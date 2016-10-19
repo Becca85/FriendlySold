@@ -24,14 +24,14 @@ $
 id => $depense->$ getid();*/
 
 	public function login($id, $username, $password Application $app){
-        //TODO
+        $users = $app['GroupDAO']->login($id , $password);
         return $app->json(array(
 				'records' => $result,
                 'status' => 'OK'
 			), 200);
     }
     public function logout($id, Application $app){
-        //TODO
+        $users = $app['GroupDAO']->login($id , $password);
         return $app->json(array(
 				'records' => $result,
                 'status' => 'OK'
