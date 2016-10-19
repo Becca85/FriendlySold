@@ -9,3 +9,15 @@ class ApiController {
 	*API 
 	*/
 }
+
+
+
+
+
+/*note exemple*/
+
+
+return $app->json(array('records'=> $result),200);
+
+/*convertion au fpormation json */
+id => $depense->$ getid();

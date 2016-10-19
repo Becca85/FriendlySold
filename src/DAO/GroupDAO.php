@@ -10,7 +10,11 @@ use FriendlySold\Domain\User;
 class UserDAO extends DAO 
 {
 	public function findAll(){
-		$db= "SELECT * FROM t_user order by usr_id_groupe";
+		
+        //TODO
+
+
+        /*$db= "SELECT * FROM t_user order by usr_id_groupe";
 		$result =  $this->getDb()->fetchAll($db);
 		//Convertir en tableau, l'objet que l'on recupère de la base de donnée
 		$tableau_db=array();
@@ -18,12 +22,15 @@ class UserDAO extends DAO
 			$id = $row['usr_id'];
 			$tableau_db[$id] = $this->buildDomainObject($row);
 		}
-		return $tableau_db;
+		return $tableau_db;*/
 	}
 
 
     public function findByGroup($group){
-        $db="SELECT * FROM t_user WHERE usr_id_groupe='$group'";
+        
+        //TODO
+
+        /*$db="SELECT * FROM t_user WHERE usr_id_groupe='$group'";
         $result = $this->getDb()->fetchAll($db);
 
         $tableau_db=array();
@@ -33,16 +40,19 @@ class UserDAO extends DAO
             $tableau_db[$id+$di] = $this -> buildDomainObject($row);
         }
         return $tableau_db;
-    }
+    }*/
 
     
     public function find($id){
-        $db = "select * from t_user where usr_id=?";
+        
+        //TODO
+
+        /*$db = "select * from t_user where usr_id=?";
         $row = $this->getDb()->fetchAssoc($db, array($id));
         if ($row)
             return $this->buildDomainObject($row);
         else
-            throw new \Exception("No user matching id " . $id);
+            throw new \Exception("No user matching id " . $id);*/
 
     }
 
@@ -84,10 +94,19 @@ class UserDAO extends DAO
         }
 
     }*/
-    
-    
+
+    public function login($id, $password, $username){
+
+        //TODO
+
+    }
 
 
+    public function logout($id){
+
+        //TODO
+
+    }
 
    /**
 

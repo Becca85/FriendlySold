@@ -10,12 +10,14 @@ class AppTest Extends WebTestCase{
     public function testUserFindAll(){
         $dao = new UserDAO($this->db);
         $result = $dao->findAll();
+        vardump($result);
         $this->assertTrue(count($result) == 3);
     }
 
     public function testUserFindByGroup(){
         $dao = new UserDAO($this->db);
         $result = $dao->findByGroup(1);
+        vardump($result);
         $this->assertTrue(count($result) == 1);
 
     }
@@ -25,6 +27,7 @@ class AppTest Extends WebTestCase{
     public function testUserFind(){
         $dao = new UserDAO($this->db);
         $result = $dao->find(1);
+        vardump($result);
         $this->assertTrue(count($result) == 1);
     }
 
@@ -32,6 +35,7 @@ class AppTest Extends WebTestCase{
     public function testUserGetColorName(){
         $dao = new UserDAO($this->db);
         $result = $dao->getColorName(2);
+        vardump($result);
         $this->assertTrue(count($result) == 1);
     }
 
