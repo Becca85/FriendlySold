@@ -40,10 +40,10 @@ public function groupname(){
 	return $this->grouname;
 }
 /*ici on definit ou redefinit username*/
-public function setGroupname($username){
+public function setGroupname($groupname){
 
 
-	$this->username=$username;
+	$this->groupname=$groupname;
 
 }
 
@@ -63,17 +63,17 @@ public function setGroup($group){
 
 }
 
-/*ici on recupere color*/
-public function getColor(){
+/*ici on recupere pwd*/
+public function getPassword(){
 
 
-	return $this->color;
+	return $this->password;
 }
 /*ici on definit ou redefinit color*/
-public function setColor($color){
+public function setPassword($password){
 
 
-	$this->color=$color;
+	$this->password=$password;
 
 }
 
