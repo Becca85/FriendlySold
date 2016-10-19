@@ -73,7 +73,7 @@ class GroupDAO extends DAO
     public function delete($id){
 
     
-      $this->getDb()->delete('t_user', array('gro_id' => $id));
+      $this->getDb()->delete('t_group', array('gro_id' => $id));
                 //pour verifier les user ressgtant apres suppression
 
 
@@ -81,7 +81,7 @@ class GroupDAO extends DAO
 
     }
 
-    public function login($id, $password, $username){
+    public function login($id, $password, $groupname){
 
         
 

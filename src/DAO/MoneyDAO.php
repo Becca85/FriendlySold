@@ -1,10 +1,10 @@
 <?php
 
 
-namespace MicroCMS\DAO;
+namespace FriendlySold\DAO;
 
 
-use MicroCMS\Domain\Money;
+use FriendlySold\Domain\Money;
 
 
 class MoneyDAO extends DAO
