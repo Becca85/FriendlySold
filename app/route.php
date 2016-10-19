@@ -1,5 +1,6 @@
 <?php
 
+
 	$app->get(
 		'/read/group/{group_id}/money',
 		'FriendlySold\Controller\APIControllerRead::getmoney'
@@ -9,7 +10,7 @@
 		'/read/group/{id}/users',
 		'FriendlySold\Controller\APIControllerRead::getUsers'
 	)->bind('read_users');
-//jefaisgetUsers Juliette <3 //
+//jefais getUsers Juliette <3 //
     $app->get(
 		'/read/group/{group_id}/group',
 		'FriendlySold\Controller\APIControllerRead::getGroups'
@@ -39,13 +40,18 @@
 		'/api/money/{id}',
 		'FriendlySold\Controller\APIControllerDelete::deletemoney'
 	)->bind('api_depense_delete');
-
+/* je fait le delete redfish*/
 	$app->delete(
 		'/api/user/{id}',
 		'FriendlySold\Controller\APIControllerDelete::deleteUser'
 	)->bind('api_user_delete');
+<<<<<<< HEAD
 
     /*$app->login(
+=======
+/*red*/
+    $app->login(
+>>>>>>> origin/master
         '/api/group/{id}',
         'FriendlySold\Controller\APIController::login'
     )->bind('api_login');
@@ -57,3 +63,4 @@
 
 
 ?>
+
