@@ -85,7 +85,7 @@ class GroupDAO extends DAO
 
     protected function buildDomainObject($row) {
 
-        $article = new User();
+        $article = new GroupDAO();
 
         $article->groupname($row['gro_id']);
 
