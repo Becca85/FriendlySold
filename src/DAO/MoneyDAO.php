@@ -132,13 +132,19 @@ class MoneyDAO extends DAO
 
     protected function buildDomainObject($row) {
 
-      /*  $article = new Article();
+        $MoneyDAO = new $MoneyDAO();
 
-        $article->setId($row['art_id']);
+        $MoneyDAO->getId($row['mon_id']);
 
-        $article->setTitle($row['art_title']);
+        $MoneyDAO->getIdPayeur($row['mon_montant']);
 
-        $article->setContent($row['art_content']);*/
+        $MoneyDAO->getDate($row['mon_id_payeur']);
+
+        $MoneyDAO->setContent($row['mon_date']);
+
+        $MoneyDAO->getGroup($row['mon_id_groupe']);
+
+        $MoneyDAO->getDescription($row['mon_description']);
 
         return $article;
 

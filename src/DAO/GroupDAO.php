@@ -87,12 +87,12 @@ class GroupDAO extends DAO
 
         $article = new User();
 
-   /*     $article->setId($row['art_id']);
+        $article->groupname($row['gro_id']);
 
-        $article->setTitle($row['art_title']);
+        $article->getGroup($row['gro_name']);
 
-        $article->setContent($row['art_content']);
-*/
+        $article->getPassword($row['gro_password']);
+
         return $article;
 
     }
