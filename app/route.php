@@ -45,13 +45,8 @@
 		'/api/user/{id}',
 		'FriendlySold\Controller\APIControllerDelete::deleteUser'
 	)->bind('api_user_delete');
-<<<<<<< HEAD
-
-    /*$app->login(
-=======
 /*red*/
     $app->login(
->>>>>>> origin/master
         '/api/group/{id}',
         'FriendlySold\Controller\APIController::login'
     )->bind('api_login');
