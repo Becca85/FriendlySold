@@ -26,44 +26,45 @@
 
 	$app->post(
 		'/add/group',
-		'Compta\Controller\APIControllerCreate::addGroup'
+		'Compta\Controller\ApiControllerCreate::addGroup'
 	)->bind('add_group');
 
 	$app->post(
 		'/add/money',
-		'Compta\Controller\APIControllerCreate::addmoney'
+		'Compta\Controller\ApiControllerCreate::addmoney'
 	)->bind('add_depense');
 
 	$app->post(
 		'/add/user',
-		'Compta\Controller\APIControllerCreate::addUser'
+		'Compta\Controller\ApiControllerCreate::addUser'
 	)->bind('add_user');
 
 	$app->delete(
 		'/api/group/{id}',
-		'Compta\Controller\APIControllerDelete::deleteGroup'
+		'Compta\Controller\ApiControllerDelete::deleteGroup'
 	)->bind('api_group_delete');
 
 	$app->delete(
 		'/api/money/{id}',
-		'Compta\Controller\APIControllerDelete::deletemoney'
+		'Compta\Controller\ApiControllerDelete::deletemoney'
 	)->bind('api_depense_delete');
 /* je fait le delete redfish*/
 	$app->delete(
 		'/api/user/{id}',
-		'Compta\Controller\APIControllerDelete::deleteUser'
+		'Compta\Controller\ApiControllerDelete::deleteUser'
 	)->bind('api_user_delete');
 /*red*/
+/*Solved by red*/
     $app->login(
         '/api/group/{id}',
-        'Compta\Controller\APIController::login'
+        'Compta\Controller\ApiController::login'
     )->bind('api_login');
 
     $app->logout(
         '/api/group/{id}',
-        'Compta\Controller\APIController::logout'
+        'Compta\Controller\ApiController::logout'
     )->bind('api_logout')
-
+/*red*/
 
 ?>
 
