@@ -98,7 +98,7 @@ private $group;
 		$this->color=$color;
 
 	}
-    public function setId($id) {
+    /*public function setId($id) {
 			$id = (int) $id;
 			if ($id <= 0) return NULL;
 			$this->id = $id;
@@ -117,7 +117,7 @@ private $group;
 			if ($length = 0 || $length > 255) return NULL;
 			$this->color = $color;
 			return $this;
-		}
+		}*/
 }
 
 

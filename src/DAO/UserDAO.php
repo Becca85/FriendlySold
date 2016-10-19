@@ -37,7 +37,7 @@ class UserDAO extends DAO
 
     
     public function find($id){
-        $db = "select * from t_user where usr_id=?";
+        $db = "SELECT * FROM t_user WHERE usr_id='$id'";
         $row = $this->getDb()->fetchAssoc($db, array($id));
         if ($row)
             return $this->buildDomainObject($row);
@@ -102,15 +102,17 @@ class UserDAO extends DAO
 
     protected function buildDomainObject($row) {
 
-        $article = new User();
+        $user= new User();
 
-   /*     $article->setId($row['art_id']);
+        $user->setId($row['usr_id']);
 
-        $article->setTitle($row['art_title']);
+        $user->setUsername($row['usr_name']);
 
-        $article->setContent($row['art_content']);
-*/
-        return $article;
+        $user->setGroup($row['usr_id_groupe']);
+
+         $user->setColor($row['usr_couleur']);
+
+        return $user;
 
     }
 }
