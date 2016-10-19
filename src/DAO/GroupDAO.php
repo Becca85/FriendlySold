@@ -23,7 +23,7 @@ class GroupDAO extends DAO
 	}
 
 
-    /*public function findByGroup($group){
+    public function findByGroup($group){
 
 
         $db="SELECT * FROM t_user WHERE usr_id_groupe='$group'";
@@ -36,7 +36,7 @@ class GroupDAO extends DAO
             $tableau_db[$id+$di] = $this -> buildDomainObject($row);
         }
         return $tableau_db;
-    }*/
+    }
 
 
     public function find($id){
@@ -81,30 +81,7 @@ class GroupDAO extends DAO
 
     }
 
-    public function login($id, $password, $groupname){
 
-        
-
-    }
-
-
-    public function logout($id){
-
-        //TODO
-
-    }
-
-   /**
-
-     * Creates a User object based on a DB row.
-
-     *
-
-     * @param array $row The DB row containing User data.
-
-     * @return \FriendlySold\Domain\User
-
-     */
 
     protected function buildDomainObject($row) {
 
