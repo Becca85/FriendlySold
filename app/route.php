@@ -1,8 +1,8 @@
 <?php
 
 	$app->get(
-		'/read/group/{group_id}/depenses',
-		'Compta\Controller\APIControllerRead::getDepenses'
+		'/read/group/{group_id}/money',
+		'Compta\Controller\APIControllerRead::getmoney'
 	)->bind('read_depenses');
 
 	$app->get(
@@ -21,8 +21,8 @@
 	)->bind('add_group');
 
 	$app->post(
-		'/add/depense',
-		'Compta\Controller\APIControllerCreate::addDepense'
+		'/add/money',
+		'Compta\Controller\APIControllerCreate::addmoney'
 	)->bind('add_depense');
 
 	$app->post(
@@ -36,8 +36,8 @@
 	)->bind('api_group_delete');
 
 	$app->delete(
-		'/api/depense/{id}',
-		'Compta\Controller\APIController::deleteDepense'
+		'/api/money/{id}',
+		'Compta\Controller\APIController::deletemoney'
 	)->bind('api_depense_delete');
 
 	$app->delete(
