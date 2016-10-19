@@ -1,59 +1,76 @@
 <?php
 
+/*getter*/
 	$app->get(
 		'/read/group/{group_id}/money',
-		'Compta\Controller\APIControllerRead::getmoney'
+
+		'FriendlySold\Controller\APIControllerRead::getMoney'
 	)->bind('read_depenses');
 
 	$app->get(
-		'/read/group/{group_id}/users',
-		'Compta\Controller\APIControllerRead::getUsers'
+		'/read/group/{id}/users',
+		'FriendlySold\Controller\ApiControllerRead::getUsers'
 	)->bind('read_users');
-//jefaisgetUsers Juliette <3 //
+
+//jefais getUsers Juliette <3 //
     $app->get(
 		'/read/group/{group_id}/group',
-		'Compta\Controller\APIControllerRead::getGroups'
+		'FriendlySold\Controller\ApiControllerRead::getGroups'
 	)->bind('read_groups');
-
+/*setter*/
 	$app->post(
 		'/add/group',
-		'Compta\Controller\APIControllerCreate::addGroup'
+		'FriendlySold\Controller\ApiControllerCreate::addGroup'
 	)->bind('add_group');
 
 	$app->post(
 		'/add/money',
-		'Compta\Controller\APIControllerCreate::addmoney'
+
+		'FriendlySold\Controller\ApiControllerCreate::addMoney'
 	)->bind('add_depense');
 //Je fais le addUser Rebecca
 	$app->post(
 		'/add/user',
-		'Compta\Controller\APIControllerCreate::addUser'
+		'FriendlySold\Controller\ApiControllerCreate::addUser'
 	)->bind('add_user');
 
+/*delete*/
+/* je fait le delete redfish*/
 	$app->delete(
 		'/api/group/{id}',
-		'Compta\Controller\APIControllerDelete::deleteGroup'
+		'FriendlySold\Controller\ApiControllerDelete::deleteGroup'
 	)->bind('api_group_delete');
 
 	$app->delete(
 		'/api/money/{id}',
-		'Compta\Controller\APIControllerDelete::deletemoney'
-	)->bind('api_depense_delete');
+
+		'FriendlySold\Controller\ApiControllerDelete::deleteMoney'
+	)->bind('api_Money_delete');
 
 	$app->delete(
 		'/api/user/{id}',
-		'Compta\Controller\APIControllerDelete::deleteUser'
-	)->bind('api_user_delete');
+		'FriendlySold\Controller\ApiControllerDelete::deleteUser'
+	)->bind('api_User_delete');
 
-    $app->login(
+
+
+/*Solved by red*/
+/*log in&out*/
+    
+
+
+   /* $app->login(
         '/api/group/{id}',
-        'Compta\Controller\APIController::login'
+        'FriendlySold\Controller\ApiController::login'
+
     )->bind('api_login');
 
     $app->logout(
         '/api/group/{id}',
-        'Compta\Controller\APIController::logout'
-    )->bind('api_logout')
+
+        'FriendlySold\Controller\ApiController::logout'
+    )->bind('api_logout')*/
 
 
 ?>
+

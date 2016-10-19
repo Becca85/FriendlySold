@@ -17,4 +17,4 @@ $app['debug'] = true;
 
 // defini les erreurs log
 
-$app['monolog.level'] = 'INFO';
+//$app['monolog.level'] = 'INFO';

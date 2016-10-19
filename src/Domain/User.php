@@ -44,12 +44,6 @@ private $group;
 
 		return $this->id;
 	}
-	/*ici in definit ou redefinit l'id*/
-	public function setId($id){
-
-
-		$this->id=$id;
-	}
 
 
 
@@ -91,14 +85,28 @@ private $group;
 
 		return $this->color;
 	}
-	/*ici on definit ou redefinit color*/
-	public function setColor($color){
 
 
-		$this->color=$color;
-
-	}
-
+    public function setId($id) {
+			$id = (int) $id;
+			if ($id <= 0) return NULL;
+			$this->id = $id;
+			return $this;
+		}
+		public function setName($name) {
+			$name = (string) $name;
+			$length = strlen($name);
+			if ($length = 0 || $length > 255) return NULL;
+			$this->name = $name;
+			return $this;
+		}
+		public function setColor($color) {
+			$color = (string) $color;
+			$length = strlen($color);
+			if ($length = 0 || $length > 255) return NULL;
+			$this->color = $color;
+			return $this;
+		}
 }
 
 

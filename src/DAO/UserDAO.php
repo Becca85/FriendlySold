@@ -54,6 +54,7 @@ class UserDAO extends DAO
         
     
 
+
     public function save(User $user){
                
         // if my id exist, I update my User table
@@ -67,7 +68,7 @@ class UserDAO extends DAO
             $query->bindValue(':username', $user->getUsername());
             $query->bindValue(':usergroup', $user->getGroup());
             $query->bindValue(':usercolor', $user->getColor());
-            
+          
             $query->execute();
 
             if($query->errorCode() != "00000");
@@ -97,13 +98,16 @@ class UserDAO extends DAO
     /*public function delete($id){
         
     $db = "DELETE FROM `t_user` WHERE `usr_id` = $id";
+
+    }*/
+
+   public function delete($id){
+
       $this->getDb()->delete('t_user', array('usr_id' => $id));
                 //pour verifier les user ressgtant apres suppression
             
-
         }
 
-    }*/
 
    /**
 
