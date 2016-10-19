@@ -9,7 +9,7 @@
 		'/read/group/{group_id}/users',
 		'Compta\Controller\APIControllerRead::getUsers'
 	)->bind('read_users');
-
+//jefaisgetUsers Juliette <3 //
     $app->get(
 		'/read/group/{group_id}/group',
 		'Compta\Controller\APIControllerRead::getGroups'
