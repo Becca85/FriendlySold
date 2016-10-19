@@ -2,58 +2,58 @@
 
 	$app->get(
 		'/read/group/{group_id}/money',
-		'Compta\Controller\APIControllerRead::getmoney'
+		'FriendlySold\Controller\APIControllerRead::getmoney'
 	)->bind('read_depenses');
 
 	$app->get(
 		'/read/group/{id}/users',
-		'Compta\Controller\APIControllerRead::getUsers'
+		'FriendlySold\Controller\APIControllerRead::getUsers'
 	)->bind('read_users');
 //jefaisgetUsers Juliette <3 //
     $app->get(
 		'/read/group/{group_id}/group',
-		'Compta\Controller\APIControllerRead::getGroups'
+		'FriendlySold\Controller\APIControllerRead::getGroups'
 	)->bind('read_groups');
 
 	$app->post(
 		'/add/group',
-		'Compta\Controller\APIControllerCreate::addGroup'
+		'FriendlySold\Controller\APIControllerCreate::addGroup'
 	)->bind('add_group');
 
 	$app->post(
 		'/add/money',
-		'Compta\Controller\APIControllerCreate::addmoney'
+		'FriendlySold\Controller\APIControllerCreate::addmoney'
 	)->bind('add_depense');
 
 	$app->post(
 		'/add/user',
-		'Compta\Controller\APIControllerCreate::addUser'
+		'FriendlySold\Controller\APIControllerCreate::addUser'
 	)->bind('add_user');
 
 	$app->delete(
 		'/api/group/{id}',
-		'Compta\Controller\APIControllerDelete::deleteGroup'
+		'FriendlySold\Controller\APIControllerDelete::deleteGroup'
 	)->bind('api_group_delete');
 
 	$app->delete(
 		'/api/money/{id}',
-		'Compta\Controller\APIControllerDelete::deletemoney'
+		'FriendlySold\Controller\APIControllerDelete::deletemoney'
 	)->bind('api_depense_delete');
 
 	$app->delete(
 		'/api/user/{id}',
-		'Compta\Controller\APIControllerDelete::deleteUser'
+		'FriendlySold\Controller\APIControllerDelete::deleteUser'
 	)->bind('api_user_delete');
 
-    $app->login(
+    /*$app->login(
         '/api/group/{id}',
-        'Compta\Controller\APIController::login'
+        'FriendlySold\Controller\APIController::login'
     )->bind('api_login');
 
     $app->logout(
         '/api/group/{id}',
-        'Compta\Controller\APIController::logout'
-    )->bind('api_logout')
+        'FriendlySold\Controller\APIController::logout'
+    )->bind('api_logout')*/
 
 
 ?>
