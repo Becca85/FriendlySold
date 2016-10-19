@@ -46,8 +46,8 @@
 		'FriendlySold\Controller\ApiControllerDelete::deleteUser'
 	)->bind('api_user_delete');
 /*red*/
-/*Solved by red*/
-    $app->login(
+
+   /* $app->login(
         '/api/group/{id}',
         'FriendlySold\Controller\ApiController::login'
     )->bind('api_login');
@@ -55,8 +55,7 @@
     $app->logout(
         '/api/group/{id}',
         'FriendlySold\Controller\ApiController::logout'
-    )->bind('api_logout')
-/*red*/
+    )->bind('api_logout')*/
 
 ?>
 
