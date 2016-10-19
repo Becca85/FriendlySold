@@ -15,7 +15,23 @@ class ApiControllerDelete {
      */
     public function DeleteUser($id, Application $app, User) {
         $user = $app['UserDAO']->delete($id);
-        $responseData = $this->buildArticleArray($article);
+        $responseData = $this->buildArticleArray($User);
+        // Create and return a JSON response
+        return $app->json($responseData);
+    }
+}
+
+	public function DeleteGroup($Group_id, Application $app, Group) {
+        $group = $app['GroupDAO']->delete($id);
+        $responseData = $this->buildArticleArray($Group);
+        // Create and return a JSON response
+        return $app->json($responseData);
+    }
+}
+
+	public function DeleteMoney($Money_id, Application $app, Money) {
+        $group = $app['MoneyDAO']->delete($id);
+        $responseData = $this->buildArticleArray($Money);
         // Create and return a JSON response
         return $app->json($responseData);
     }
