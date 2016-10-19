@@ -32,17 +32,17 @@
 
 	$app->delete(
 		'/api/group/{id}',
-		'Compta\Controller\APIController::deleteGroup'
+		'Compta\Controller\APIControllerDelete::deleteGroup'
 	)->bind('api_group_delete');
 
 	$app->delete(
 		'/api/money/{id}',
-		'Compta\Controller\APIController::deletemoney'
+		'Compta\Controller\APIControllerDelete::deletemoney'
 	)->bind('api_depense_delete');
 
 	$app->delete(
 		'/api/user/{id}',
-		'Compta\Controller\APIController::deleteUser'
+		'Compta\Controller\APIControllerDelete::deleteUser'
 	)->bind('api_user_delete');
 
     $app->login(
