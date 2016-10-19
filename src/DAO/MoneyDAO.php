@@ -41,7 +41,7 @@ class MoneyDAO extends DAO
      */
     public function delete($id) {
         // Delete the article
-        $this->getDb()->delete('t_article', array('art_id' => $id));
+        $this->getDb()->delete('t_money', array('mon_id' => $id));
     }
 
 
@@ -61,7 +61,7 @@ class MoneyDAO extends DAO
 
     public function find($id) {
 
-        $sql = "select * from t_article where art_id=?";
+        $sql = "select * from t_money where mon_id=?";
 
         $row = $this->getDb()->fetchAssoc($sql, array($id));
 
@@ -72,7 +72,7 @@ class MoneyDAO extends DAO
 
         else
 
-            throw new \Exception("No article matching id " . $id);
+            throw new \Exception("No money matching id " . $id);
 
     }
     /**
@@ -87,7 +87,7 @@ class MoneyDAO extends DAO
 
     public function findAll() {
 
-        $sql = "select * from t_article order by art_id desc";
+        $sql = "select * from t_money order by mon_id";
 
         $result = $this->getDb()->fetchAll($sql);
 
@@ -98,7 +98,7 @@ class MoneyDAO extends DAO
 
         foreach ($result as $row) {
 
-            $articleId = $row['art_id'];
+            $articleId = $row['mon_id'];
 
             $articles[$articleId] = $this->buildDomainObject($row);
 
@@ -132,13 +132,13 @@ class MoneyDAO extends DAO
 
     protected function buildDomainObject($row) {
 
-        $article = new Article();
+      /*  $article = new Article();
 
         $article->setId($row['art_id']);
 
         $article->setTitle($row['art_title']);
 
-        $article->setContent($row['art_content']);
+        $article->setContent($row['art_content']);*/
 
         return $article;
 
