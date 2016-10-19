@@ -6,7 +6,7 @@
 	)->bind('read_depenses');
 
 	$app->get(
-		'/read/group/{group_id}/users',
+		'/read/group/{id}/users',
 		'Compta\Controller\APIControllerRead::getUsers'
 	)->bind('read_users');
 //jefaisgetUsers Juliette <3 //
