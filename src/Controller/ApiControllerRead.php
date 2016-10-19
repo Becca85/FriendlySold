@@ -4,6 +4,7 @@
 
 	use Silex\Application;
 
+
 	class APIControllerRead {
 
 		public function getUsers($id, Application $app) {
@@ -13,5 +14,8 @@
                 'status' => 'OK'
 			), 200);
 		}
+        public function getMoney($id, Application $app  ){
+            throw new \Exception("TODO");
+        }
 
     }

@@ -87,6 +87,7 @@ private $group;
 	}
 
 
+
     public function setId($id) {
 			$id = (int) $id;
 			if ($id <= 0) return NULL;

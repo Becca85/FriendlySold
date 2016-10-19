@@ -2,14 +2,15 @@
 
 /*getter*/
 	$app->get(
-		'/read/group/{group_id}/money',
-
-		'FriendlySold\Controller\APIControllerRead::getMoney'
+		/*'/read/group/{id}/money',*/
+        '/',
+	"FriendlySold\Controller\ApiControllerRead::getMoney"
 	)->bind('read_depenses');
 
-	$app->get(
-		'/read/group/{id}/users',
-		'FriendlySold\Controller\ApiControllerRead::getUsers'
+	$app->match(
+        /*read/group/{id}/users**/
+		'read/group/{id}/users',
+		"FriendlySold\Controller\ApiControllerRead::getUsers"
 	)->bind('read_users');
 
 //jefais getUsers Juliette <3 //
@@ -71,6 +72,4 @@
         'FriendlySold\Controller\ApiController::logout'
     )->bind('api_logout')*/
 
-
-?>
 
