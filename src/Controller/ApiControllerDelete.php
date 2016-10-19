@@ -2,7 +2,7 @@
 namespace Friendly\Controller;
 use Silex\Apllication;
 use Symfony\Component\HttpFoundation\Request;
-use Friendly\Domain\User;
+use FriendlySold\Domain\User;
 
 class ApiControllerDelete {
 	 /**
@@ -13,25 +13,22 @@ class ApiControllerDelete {
      *
      * @return Article details in JSON format
      */
-    public function DeleteUser($id, Application $app, User) {
+    public function deleteUser($id, Application $app) {
         $user = $app['UserDAO']->delete($id);
-        $responseData = $this->buildArticleArray($User);
         // Create and return a JSON response
         return $app->json($responseData);
     }
 }
 
-	public function DeleteGroup($Group_id, Application $app, Group) {
+	public function deleteGroup($id, Application $app) {
         $group = $app['GroupDAO']->delete($id);
-        $responseData = $this->buildArticleArray($Group);
         // Create and return a JSON response
         return $app->json($responseData);
     }
 }
 
-	public function DeleteMoney($Money_id, Application $app, Money) {
+	public function deleteMoney($id, Application $app) {
         $group = $app['MoneyDAO']->delete($id);
-        $responseData = $this->buildArticleArray($Money);
         // Create and return a JSON response
         return $app->json($responseData);
     }

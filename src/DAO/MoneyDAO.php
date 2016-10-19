@@ -108,6 +108,15 @@ class MoneyDAO extends DAO
 
     }
 
+   public function delete($id){
+
+
+      $this->getDb()->delete('t_money', array('mon_id' => $id));
+                //pour verifier les user ressgtant apres suppression
+
+
+        }
+
 
     /**
 
