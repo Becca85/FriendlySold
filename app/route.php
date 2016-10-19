@@ -1,68 +1,60 @@
 <?php
 
-/*exemple*/
-
-
-/*a adapter*/
-// Home page
-
-
-=======
 
 	$app->get(
 		'/read/group/{group_id}/money',
-		'Compta\Controller\APIControllerRead::getmoney'
+		'FriendlySold\Controller\APIControllerRead::getmoney'
 	)->bind('read_depenses');
 
 	$app->get(
 		'/read/group/{id}/users',
-		'Compta\Controller\APIControllerRead::getUsers'
+		'FriendlySold\Controller\ApiControllerRead::getUsers'
 	)->bind('read_users');
 //jefais getUsers Juliette <3 //
     $app->get(
 		'/read/group/{group_id}/group',
-		'Compta\Controller\APIControllerRead::getGroups'
+		'FriendlySold\Controller\APIControllerRead::getGroups'
 	)->bind('read_groups');
 
 	$app->post(
 		'/add/group',
-		'Compta\Controller\ApiControllerCreate::addGroup'
+		'FriendlySold\Controller\APIControllerCreate::addGroup'
 	)->bind('add_group');
 
 	$app->post(
 		'/add/money',
-		'Compta\Controller\ApiControllerCreate::addmoney'
+		'FriendlySold\Controller\APIControllerCreate::addmoney'
 	)->bind('add_depense');
 
 	$app->post(
 		'/add/user',
-		'Compta\Controller\ApiControllerCreate::addUser'
+		'FriendlySold\Controller\APIControllerCreate::addUser'
 	)->bind('add_user');
 
 	$app->delete(
 		'/api/group/{id}',
-		'Compta\Controller\ApiControllerDelete::deleteGroup'
+		'FriendlySold\Controller\APIControllerDelete::deleteGroup'
 	)->bind('api_group_delete');
 
 	$app->delete(
 		'/api/money/{id}',
-		'Compta\Controller\ApiControllerDelete::deletemoney'
+		'FriendlySold\Controller\APIControllerDelete::deletemoney'
 	)->bind('api_depense_delete');
 /* je fait le delete redfish*/
 	$app->delete(
 		'/api/user/{id}',
-		'Compta\Controller\ApiControllerDelete::deleteUser'
+		'FriendlySold\Controller\APIControllerDelete::deleteUser'
 	)->bind('api_user_delete');
 /*red*/
 /*Solved by red*/
     $app->login(
         '/api/group/{id}',
-        'Compta\Controller\ApiController::login'
+        'FriendlySold\Controller\APIController::login'
     )->bind('api_login');
 
     $app->logout(
         '/api/group/{id}',
-        'Compta\Controller\ApiController::logout'
+        'FriendlySold\Controller\APIController::logout'
     )->bind('api_logout')
 /*red*/
 

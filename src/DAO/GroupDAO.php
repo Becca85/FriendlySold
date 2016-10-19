@@ -7,10 +7,10 @@ namespace FriendlySold\DAO;
 use FriendlySold\Domain\User;
 
 
-class UserDAO extends DAO 
+class UserDAO extends DAO
 {
 	public function findAll(){
-		
+
         //TODO
 
 
@@ -27,7 +27,7 @@ class UserDAO extends DAO
 
 
     public function findByGroup($group){
-        
+
         //TODO
 
         /*$db="SELECT * FROM t_user WHERE usr_id_groupe='$group'";
@@ -42,9 +42,9 @@ class UserDAO extends DAO
         return $tableau_db;
     }*/
 
-    
+
     public function find($id){
-        
+
         //TODO
 
         /*$db = "select * from t_user where usr_id=?";
@@ -61,16 +61,16 @@ class UserDAO extends DAO
       $result = $this->getDb()->fetchAll($db);
                 return $result;
         }
-        
-    
+
+
 
     /*public function save(User,$user){
          $userData = array(
             'usr_name' => $user->getUsername(),
             'usr_id_groupe' => $user->getGroup(),
             'usr_couleur' => $user->getColor()
-            
-            
+
+
             );
         if ($user->getId()) {
             // The user has already been saved : update it
@@ -85,11 +85,11 @@ class UserDAO extends DAO
     }*/
 
    /* public function delete($id){
-        
+
     $db = "DELETE FROM `t_user` WHERE `usr_id` = $id";
       $this->getDb()->delete('t_user', array('usr_id' => $id));
                 //pour verifier les user ressgtant apres suppression
-            
+
 
         }
 
