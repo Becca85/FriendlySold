@@ -54,27 +54,47 @@ class UserDAO extends DAO
         
     
 
-    public function save(User,$user){
-         $userData = array(
-            'usr_name' => $user->getUsername(),
-            'usr_id_groupe' => $user->getGroup(),
-            'usr_couleur' => $user->getColor()
+    public function save(User $user){
+               
+        // if my id exist, I update my User table
+        if (!is_null($user->getId())){
+      
+            echo "update:\n";
+            $update = "UPDATE t_user SET usr_name=:username,usr_id_groupe=:usergroup,usr_couleur=:usercolor WHERE usr_id=:userid";
+            $query = $this->getDb()->prepare($update);
+
+            $query->bindValue(':userid', $user->getId());
+            $query->bindValue(':username', $user->getUsername());
+            $query->bindValue(':usergroup', $user->getGroup());
+            $query->bindValue(':usercolor', $user->getColor());
             
-            
-            );
-        if ($user->getId()) {
-            // The user has already been saved : update it
-            $this->getDb()->update('t_user', $userData, array('usr_id' => $user->getId()));
-        } else {
-            // The user has never been saved : insert it
-            $this->getDb()->insert('t_user', $userData);
-            // Get the id of the newly created user and set it on the entity.
-            $id = $this->getDb()->lastInsertId();
-            $user->setId($id);
+            $query->execute();
+
+            if($query->errorCode() != "00000");
+                var_dump($query->errorInfo());
+            return $user;
         }
+
+        // If not, I create a new user
+         else { 
+            echo "create:\n";
+            $create = "INSERT INTO t_user(usr_name, usr_id_groupe, usr_couleur) VALUES (:username,:usergroup,:usercolor)";
+            $query = $this->getDb()->prepare($create);
+
+            $query->bindValue(':username', $user->getUsername());
+            $query->bindValue(':usergroup', $user->getGroup());
+            $query->bindValue(':usercolor', $user->getColor());
+            
+            $query->execute();
+
+            $user->setId($this->getDb()->lastInsertId());
+            var_dump($user);
+            return $user;
+        } 
+  
     }
 
-    public function delete($id){
+    /*public function delete($id){
         
     $db = "DELETE FROM `t_user` WHERE `usr_id` = $id";
       $this->getDb()->delete('t_user', array('usr_id' => $id));
@@ -83,7 +103,7 @@ class UserDAO extends DAO
 
         }
 
-    }
+    }*/
 
    /**
 

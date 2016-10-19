@@ -24,7 +24,7 @@
 		'/add/money',
 		'Compta\Controller\APIControllerCreate::addmoney'
 	)->bind('add_depense');
-
+//Je fais le addUser Rebecca
 	$app->post(
 		'/add/user',
 		'Compta\Controller\APIControllerCreate::addUser'
