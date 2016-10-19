@@ -98,7 +98,26 @@ private $group;
 		$this->color=$color;
 
 	}
-
+    public function setId($id) {
+			$id = (int) $id;
+			if ($id <= 0) return NULL;
+			$this->id = $id;
+			return $this;
+		}
+		public function setName($name) {
+			$name = (string) $name;
+			$length = strlen($name);
+			if ($length = 0 || $length > 255) return NULL;
+			$this->name = $name;
+			return $this;
+		}
+		public function setColor($color) {
+			$color = (string) $color;
+			$length = strlen($color);
+			if ($length = 0 || $length > 255) return NULL;
+			$this->color = $color;
+			return $this;
+		}
 }
 
 

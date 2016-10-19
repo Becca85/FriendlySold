@@ -18,10 +18,10 @@ $
 /*note exemple*/
 
 
-return $app->json(array('records'=> $result),200);
+/*return $app->json(array('records'=> $result),200);
 
-/*convertion au fpormation json */
-id => $depense->$ getid();
+/*convertion au fpormation json
+id => $depense->$ getid();*/
 
 	public function login($id, $username, $password Application $app){
         //TODO

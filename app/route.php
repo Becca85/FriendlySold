@@ -8,7 +8,7 @@
 
 	$app->get(
 		'/read/group/{id}/users',
-		'FriendlySold\Controller\APIControllerRead::getUsers'
+		'FriendlySold\Controller\ApiControllerRead::getUsers'
 	)->bind('read_users');
 //jefais getUsers Juliette <3 //
     $app->get(
@@ -54,7 +54,7 @@
     $app->logout(
         '/api/group/{id}',
         'FriendlySold\Controller\APIController::logout'
-    )->bind('api_logout')*/
+    )->bind('api_logout')
 
 
 ?>
