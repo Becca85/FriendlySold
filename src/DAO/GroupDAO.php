@@ -7,30 +7,26 @@ namespace FriendlySold\DAO;
 use FriendlySold\Domain\User;
 
 
-class UserDAO extends DAO
+class GroupDAO extends DAO
 {
 	public function findAll(){
 
-        //TODO
-
-
-        /*$db= "SELECT * FROM t_user order by usr_id_groupe";
+        $db= "SELECT * FROM t_groupe order by gro_id";
 		$result =  $this->getDb()->fetchAll($db);
 		//Convertir en tableau, l'objet que l'on recupère de la base de donnée
 		$tableau_db=array();
 		foreach ($result as $row) {
-			$id = $row['usr_id'];
+			$id = $row['gro_name'];
 			$tableau_db[$id] = $this->buildDomainObject($row);
 		}
-		return $tableau_db;*/
+		return $tableau_db;
 	}
 
 
-    public function findByGroup($group){
+    /*public function findByGroup($group){
 
-        //TODO
 
-        /*$db="SELECT * FROM t_user WHERE usr_id_groupe='$group'";
+        $db="SELECT * FROM t_user WHERE usr_id_groupe='$group'";
         $result = $this->getDb()->fetchAll($db);
 
         $tableau_db=array();
@@ -45,42 +41,32 @@ class UserDAO extends DAO
 
     public function find($id){
 
-        //TODO
-
-        /*$db = "select * from t_user where usr_id=?";
+        $db = "select * from t_groupe where gro_id=?";
         $row = $this->getDb()->fetchAssoc($db, array($id));
         if ($row)
             return $this->buildDomainObject($row);
         else
-            throw new \Exception("No user matching id " . $id);*/
+            throw new \Exception("No group matching id " . $id);
 
     }
 
-    public function getColorName($id){
-        $db = "SELECT usr_couleur FROM t_user WHERE usr_id= $id";
-      $result = $this->getDb()->fetchAll($db);
-                return $result;
-        }
-
-
-
-    /*public function save(User,$user){
-         $userData = array(
-            'usr_name' => $user->getUsername(),
-            'usr_id_groupe' => $user->getGroup(),
-            'usr_couleur' => $user->getColor()
+    public function save(Group,$groupe){
+         $groupeData = array(
+            'gro_name' => $groupe->groupname(),
+            'gro_id' => $groupe->getId(),
+            'gro_password' => $groupe->getPassword()
 
 
             );
-        if ($user->getId()) {
+        if ($groupe->getId()) {
             // The user has already been saved : update it
-            $this->getDb()->update('t_user', $userData, array('usr_id' => $user->getId()));
+            $this->getDb()->update('t_group', $groupeData, array('usr_id' => $groupe->getId()));
         } else {
             // The user has never been saved : insert it
-            $this->getDb()->insert('t_user', $userData);
+            $this->getDb()->insert('t_group', $groupeData);
             // Get the id of the newly created user and set it on the entity.
             $id = $this->getDb()->lastInsertId();
-            $user->setId($id);
+            $group->setId($id);
         }
     }*/
 

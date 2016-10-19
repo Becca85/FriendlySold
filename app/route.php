@@ -3,6 +3,7 @@
 /*getter*/
 	$app->get(
 		'/read/group/{group_id}/money',
+
 		'FriendlySold\Controller\APIControllerRead::getMoney'
 	)->bind('read_depenses');
 
@@ -24,6 +25,7 @@
 
 	$app->post(
 		'/add/money',
+
 		'FriendlySold\Controller\ApiControllerCreate::addMoney'
 	)->bind('add_depense');
 
@@ -41,26 +43,34 @@
 
 	$app->delete(
 		'/api/money/{id}',
+
 		'FriendlySold\Controller\ApiControllerDelete::deleteMoney'
 	)->bind('api_Money_delete');
+
 	$app->delete(
 		'/api/user/{id}',
 		'FriendlySold\Controller\ApiControllerDelete::deleteUser'
-	)->bind('api_user_delete');
+	)->bind('api_User_delete');
+
 
 
 /*Solved by red*/
 /*log in&out*/
-    $app->login(
+    
+
+
+   /* $app->login(
         '/api/group/{id}',
-        'FriendlySold\Controller\ApiControllerGroup::login'
+        'FriendlySold\Controller\ApiController::login'
+
     )->bind('api_login');
 
     $app->logout(
         '/api/group/{id}',
-        'FriendlySold\Controller\ApiControllerGroup::logout'
-    )->bind('api_logout')
-/*red*/
+
+        'FriendlySold\Controller\ApiController::logout'
+    )->bind('api_logout')*/
+
 
 ?>
 

@@ -17,19 +17,6 @@ $app->run();
 
 ?>
 
-<!--<!DOCTYPE html>
-<html>
-<head>
-	<title>friendySold</title>
-</head>
-<body>
-
-<?php
-
-
-?>
-</body>
-</html>-->
 
 
 
