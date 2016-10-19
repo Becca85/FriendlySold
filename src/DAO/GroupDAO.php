@@ -50,23 +50,23 @@ class GroupDAO extends DAO
 
     }
 
-    /*public function save(User,$user){
-         $userData = array(
-            'usr_name' => $user->getUsername(),
-            'usr_id_groupe' => $user->getGroup(),
-            'usr_couleur' => $user->getColor()
+    public function save(Group,$groupe){
+         $groupeData = array(
+            'gro_name' => $groupe->groupname(),
+            'gro_id' => $groupe->getId(),
+            'gro_password' => $groupe->getPassword()
 
 
             );
-        if ($user->getId()) {
+        if ($groupe->getId()) {
             // The user has already been saved : update it
-            $this->getDb()->update('t_user', $userData, array('usr_id' => $user->getId()));
+            $this->getDb()->update('t_group', $groupeData, array('usr_id' => $groupe->getId()));
         } else {
             // The user has never been saved : insert it
-            $this->getDb()->insert('t_user', $userData);
+            $this->getDb()->insert('t_group', $groupeData);
             // Get the id of the newly created user and set it on the entity.
             $id = $this->getDb()->lastInsertId();
-            $user->setId($id);
+            $group->setId($id);
         }
     }*/
 
