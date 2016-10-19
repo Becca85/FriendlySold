@@ -18,43 +18,43 @@
 
 	$app->post(
 		'/add/group',
-		'FriendlySold\Controller\APIControllerCreate::addGroup'
+		'FriendlySold\Controller\ApiControllerCreate::addGroup'
 	)->bind('add_group');
 
 	$app->post(
 		'/add/money',
-		'FriendlySold\Controller\APIControllerCreate::addmoney'
+		'FriendlySold\Controller\ApiControllerCreate::addmoney'
 	)->bind('add_depense');
 
 	$app->post(
 		'/add/user',
-		'FriendlySold\Controller\APIControllerCreate::addUser'
+		'FriendlySold\Controller\ApiControllerCreate::addUser'
 	)->bind('add_user');
 
 	$app->delete(
 		'/api/group/{id}',
-		'FriendlySold\Controller\APIControllerDelete::deleteGroup'
+		'FriendlySold\Controller\ApiControllerDelete::deleteGroup'
 	)->bind('api_group_delete');
 
 	$app->delete(
 		'/api/money/{id}',
-		'FriendlySold\Controller\APIControllerDelete::deletemoney'
+		'FriendlySold\Controller\ApiControllerDelete::deletemoney'
 	)->bind('api_depense_delete');
 /* je fait le delete redfish*/
 	$app->delete(
 		'/api/user/{id}',
-		'FriendlySold\Controller\APIControllerDelete::deleteUser'
+		'FriendlySold\Controller\ApiControllerDelete::deleteUser'
 	)->bind('api_user_delete');
 /*red*/
 /*Solved by red*/
     $app->login(
         '/api/group/{id}',
-        'FriendlySold\Controller\APIController::login'
+        'FriendlySold\Controller\ApiController::login'
     )->bind('api_login');
 
     $app->logout(
         '/api/group/{id}',
-        'FriendlySold\Controller\APIController::logout'
+        'FriendlySold\Controller\ApiController::logout'
     )->bind('api_logout')
 /*red*/
 
