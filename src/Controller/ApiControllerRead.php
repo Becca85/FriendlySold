@@ -41,7 +41,7 @@
                 'status' => 'OK'
 			), 200);
         }
-        }
+
         public function getGroups($id, Application $app  ){
             try{
                 $users = $app['GroupDAO']->find($id);
@@ -59,5 +59,5 @@
                 'status' => 'OK'
 			), 200);
         }
-
     }
+

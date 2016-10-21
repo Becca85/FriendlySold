@@ -43,11 +43,13 @@ class UserDAO extends DAO
 
         $db = "SELECT * FROM t_user WHERE usr_id='$id'";
         $row = $this->getDb()->fetchAssoc($db, array($id));
-        if ($row)
+        if ($row){
             return $this->buildDomainObject($row);
-        else
-            throw new \Exception("No user matching id " . $id);
 
+        } else {
+            throw new \Exception("No user matching id " . $id);}
+
+    }
     }
 
     public function getColorName($id){
@@ -55,7 +57,7 @@ class UserDAO extends DAO
       $result = $this->getDb()->fetchAll($db);
                 return $result;
         }
-    }
+
         
     
 
@@ -114,6 +116,7 @@ class UserDAO extends DAO
 
       $this->getDb()->delete('t_user', array('usr_id' => $id));
                 //pour verifier les user ressgtant apres suppression
+
             
         }
    }

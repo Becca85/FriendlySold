@@ -59,7 +59,7 @@
     
 
 
-    $app->login(
+   /* $app->login(
         '/api/{id}',
         'FriendlySold\Controller\ApiController::login'
 
@@ -69,6 +69,6 @@
         '/api/{id}',
 
         'FriendlySold\Controller\ApiController::logout'
-    )->bind('api_logout')
-
+    )->bind('api_logout');
+*/
 
