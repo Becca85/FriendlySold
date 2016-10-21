@@ -12,7 +12,7 @@ private $payeur;
 private $date;
 private $group;
 private $description;
-}
+
 /*ici on recupere l'id*/
 public function getId(){
 	return $this->id;
@@ -81,4 +81,5 @@ public function getDescription(){
 /*ici on definit ou redefinit description*/
 public function setDescription($description){
 	$this->description=$description;
+}
 }

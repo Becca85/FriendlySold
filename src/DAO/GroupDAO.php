@@ -4,7 +4,7 @@
 namespace FriendlySold\DAO;
 
 
-use FriendlySold\Domain\User;
+use FriendlySold\Domain\group;
 
 
 class GroupDAO extends DAO
@@ -96,13 +96,13 @@ class GroupDAO extends DAO
 
         $groupe = new Group();
 
-        $article->groupname($row['gro_id']);
+        $groupe->groupname($row['gro_id']);
 
-        $article->getGroup($row['gro_name']);
+        $groupe->getGroup($row['gro_name']);
 
-        $article->getPassword($row['gro_password']);
+        $groupe->getPassword($row['gro_password']);
 
-        return $article;
+        return $groupe;
 
     }
 }

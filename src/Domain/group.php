@@ -15,7 +15,7 @@ private $groupname;
 private $password;
 
 
-}
+
 /*ici on recupere l'id*/
 public function getId(){
 
@@ -75,6 +75,7 @@ public function setPassword($password){
 
 	$this->password=$password;
 
+}
 }
 
 
