@@ -42,10 +42,10 @@
 			), 200);
         }
 
-        public function getGroups($id, Application $app  ){
-            try{
-                $users = $app['GroupDAO']->find($id);
-            }catch(Exception $e){
+        public function getGroups($group_id, Application $app  ){
+            try {
+                $users = $app['GroupDAO']->find($group_id);
+            } catch(Exception $e){
                 return $app->json(array(
                     'records' => [],
                     'status' => 'KO',

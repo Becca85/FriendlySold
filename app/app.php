@@ -9,5 +9,12 @@ $app->register(new Silex\Provider\ServiceControllerServiceProvider());
 $app['UserDAO'] = $app->share(function ($app) {
     return new FriendlySold\DAO\UserDAO($app['db']);
 });
+$app['GroupDAO'] = $app->share(function ($app) {
+    return new FriendlySold\DAO\GroupDAO($app['db']);
+});
+$app['MoneyDAO'] = $app->share(function ($app) {
+    return new FriendlySold\DAO\MoneyDAO($app['db']);
+});
+
 
 ?>

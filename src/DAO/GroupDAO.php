@@ -40,21 +40,21 @@ class GroupDAO extends DAO
 
 
     public function find($id){
-        if ($id = null){
+        if ($id == null) {
              throw new \Exception("id null ");
         } else {
 
-        $db = "select * from t_groupe where gro_id=?";
+        $db = "SELECT * FROM t_groupe WHERE gro_id='$id'";
         $row = $this->getDb()->fetchAssoc($db, array($id));
         if ($row)
             return $this->buildDomainObject($row);
         else
-            throw new \Exception("No group matching id " . $id);
+            throw new \Exception("No group matching id " . $id . ".");
 
     }
     }
 
-    public function save(Group,$groupe){
+    /* public function save(Group , $groupe){
          $groupeData = array(
             'gro_name' => $groupe->groupname(),
             'gro_id' => $groupe->getId(),
@@ -94,7 +94,7 @@ class GroupDAO extends DAO
 
     protected function buildDomainObject($row) {
 
-        $article = new GroupDAO();
+        $groupe = new Group();
 
         $article->groupname($row['gro_id']);
 
