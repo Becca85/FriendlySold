@@ -60,13 +60,13 @@
 
 
     $app->login(
-        '/api/group/{id}',
+        '/api/{id}',
         'FriendlySold\Controller\ApiController::login'
 
     )->bind('api_login');
 
     $app->logout(
-        '/api/group/{id}',
+        '/api/{id}',
 
         'FriendlySold\Controller\ApiController::logout'
     )->bind('api_logout')
