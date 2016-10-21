@@ -60,10 +60,12 @@ class MoneyDAO extends DAO
      */
 
     public function find($id) {
+        if ($id = null){
+             throw new \Exception("id null ");
+        } else {
+        $db = "select * from t_money where mon_id=?";
 
-        $sql = "select * from t_money where mon_id=?";
-
-        $row = $this->getDb()->fetchAssoc($sql, array($id));
+        $row = $this->getDb()->fetchAssoc($db, array($id));
 
 
         if ($row)
@@ -74,6 +76,7 @@ class MoneyDAO extends DAO
 
             throw new \Exception("No money matching id " . $id);
 
+    }
     }
     /**
 

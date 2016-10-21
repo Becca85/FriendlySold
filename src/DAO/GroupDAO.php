@@ -40,6 +40,9 @@ class GroupDAO extends DAO
 
 
     public function find($id){
+        if ($id = null){
+             throw new \Exception("id null ");
+        } else {
 
         $db = "select * from t_groupe where gro_id=?";
         $row = $this->getDb()->fetchAssoc($db, array($id));
@@ -48,6 +51,7 @@ class GroupDAO extends DAO
         else
             throw new \Exception("No group matching id " . $id);
 
+    }
     }
 
     public function save(Group,$groupe){
