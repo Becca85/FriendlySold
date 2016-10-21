@@ -12,5 +12,11 @@ Class APIControllerCreate {
 
 
 	}
+    public function addMoney($id, Application $app  ){
+            throw new \Exception("TODO");
+        }
+    public function addGroup($id, Application $app  ){
+            throw new \Exception("TODO");
+        }
 
 }

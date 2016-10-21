@@ -17,5 +17,8 @@
         public function getMoney($id, Application $app  ){
             throw new \Exception("TODO");
         }
+        public function getGroups($id, Application $app  ){
+            throw new \Exception("TODO");
+        }
 
     }
