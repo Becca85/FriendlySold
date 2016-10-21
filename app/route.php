@@ -55,12 +55,11 @@
 
 
 
-/*Solved by red*/
 /*log in&out*/
     
 
 
-   /* $app->login(
+    $app->login(
         '/api/group/{id}',
         'FriendlySold\Controller\ApiController::login'
 
@@ -70,6 +69,6 @@
         '/api/group/{id}',
 
         'FriendlySold\Controller\ApiController::logout'
-    )->bind('api_logout')*/
+    )->bind('api_logout')
 
 
