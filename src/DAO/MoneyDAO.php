@@ -40,8 +40,13 @@ class MoneyDAO extends DAO
      * @param integer $id The article id.
      */
     public function delete($id) {
+        if ($id = null){
+             throw new \Exception("id null ");
+        } else {
+
         // Delete the article
         $this->getDb()->delete('t_money', array('mon_id' => $id));
+    }
     }
 
 

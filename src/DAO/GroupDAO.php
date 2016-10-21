@@ -75,6 +75,10 @@ class GroupDAO extends DAO
     }*/
 
     public function delete($id){
+        if ($id = null){
+             throw new \Exception("id null ");
+        } else {
+
 
     
       $this->getDb()->delete('t_group', array('gro_id' => $id));
@@ -83,6 +87,7 @@ class GroupDAO extends DAO
 
         
 
+    }
     }
 
 
