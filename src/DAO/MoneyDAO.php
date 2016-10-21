@@ -16,7 +16,7 @@ class MoneyDAO extends DAO
      *
      * @param \MicroCMS\Domain\Article $article The article to save
      */
-    public function save(Article $article) {
+   /* public function save(Article , $article) {
         $articleData = array(
             'art_title' => $article->getTitle(),
             'art_content' => $article->getContent(),
@@ -32,7 +32,7 @@ class MoneyDAO extends DAO
             $id = $this->getDb()->lastInsertId();
             $article->setId($id);
         }
-    }
+    } */
 
     /**
      * Removes an article from the database.
@@ -40,7 +40,7 @@ class MoneyDAO extends DAO
      * @param integer $id The article id.
      */
     public function delete($id) {
-        if ($id = null){
+        if ($id == null){
              throw new \Exception("id null ");
         } else {
 
@@ -65,7 +65,7 @@ class MoneyDAO extends DAO
      */
 
     public function find($id) {
-        if ($id = null){
+        if ($id == null){
              throw new \Exception("id null ");
         } else {
         $db = "select * from t_money where mon_id=?";
@@ -116,15 +116,6 @@ class MoneyDAO extends DAO
 
     }
 
-   public function delete($id){
-
-
-      $this->getDb()->delete('t_money', array('mon_id' => $id));
-                //pour verifier les user ressgtant apres suppression
-
-
-        }
-
 
     /**
 
@@ -140,21 +131,21 @@ class MoneyDAO extends DAO
 
     protected function buildDomainObject($row) {
 
-        $MoneyDAO = new $MoneyDAO();
+        $MoneyDAO = new Money();
 
         $MoneyDAO->getId($row['mon_id']);
 
-        $MoneyDAO->getIdPayeur($row['mon_montant']);
+        $MoneyDAO->getMontant($row['mon_montant']);
 
-        $MoneyDAO->getDate($row['mon_id_payeur']);
+        $MoneyDAO->getIdPayeur($row['mon_id_payeur']);
 
-        $MoneyDAO->setContent($row['mon_date']);
+        $MoneyDAO->getDate($row['mon_date']);
 
         $MoneyDAO->getGroup($row['mon_id_groupe']);
 
         $MoneyDAO->getDescription($row['mon_description']);
 
-        return $article;
+        return $MoneyDAO;
 
     }
 

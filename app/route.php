@@ -3,7 +3,7 @@
 /*getter*/
 	$app->get(
 		/*'/read/group/{id}/money',*/
-        '/',
+       '/read/group/{id}/money',
 	"FriendlySold\Controller\ApiControllerRead::getMoney"
 	)->bind('read_depenses');
 
