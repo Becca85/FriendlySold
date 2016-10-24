@@ -40,7 +40,7 @@ class MoneyDAO extends DAO
      * @param integer $id The article id.
      */
     public function delete($id) {
-        if ($id = null){
+        if ($id == null){
              throw new \Exception("id null ");
         } else {
 
@@ -65,7 +65,7 @@ class MoneyDAO extends DAO
      */
 
     public function find($id) {
-        if ($id = null){
+        if ($id == null){
              throw new \Exception("id null ");
         } else {
         $db = "select * from t_money where mon_id=?";
@@ -116,14 +116,7 @@ class MoneyDAO extends DAO
 
     }
 
-   public function delete($id){
-
-
-      $this->getDb()->delete('t_money', array('mon_id' => $id));
-                //pour verifier les user ressgtant apres suppression
-
-
-        }
+   
 
 
     /**
@@ -154,7 +147,7 @@ class MoneyDAO extends DAO
 
         $MoneyDAO->getDescription($row['mon_description']);
 
-        return $article;
+        return $MoneyDAO;
 
     }
 

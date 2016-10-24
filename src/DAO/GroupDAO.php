@@ -1,10 +1,10 @@
 <?php
 
-
 namespace FriendlySold\DAO;
 
 
-use FriendlySold\Domain\group;
+
+use FriendlySold\Domain\Group;
 
 
 class GroupDAO extends DAO
@@ -90,17 +90,72 @@ class GroupDAO extends DAO
     }
     }
 
+        public function login($name, $password){
+            //TODO a tester
+            $toto = false ;
+            $relatedGroups = $this->getDb()->select('t_group', array('gro_name' => $name));
+            /*TODO faire peter une exeption*/
+            var_dump($relatedGroups);
+            if ($password == $relatedGroups[0]['gro_password'] ) {
+                $toto = true ;
+                if($toto == true){
+                    $key = rand(100, 999);
+                    var_dump($this->db);
+                    //$relatedGroups[0]['gro_id']
+                    $db = "UPDATE `t_groupe` SET gro_temp_key = $key WHERE gro_id = :id";
+                    $this->getDb()->prepare($db);
+                    $this->getDb()->execute(array('id' => $relatedGroups[0]['gro_id']));
+
+                    return $app->json(array(
+                        'record'=> $key ,
+                        'status'=> 'ok' ,
+                        'error'=> $e-> getMessage()
+
+
+                        ), 200);
+
+
+
+
+                }
+            } else {
+                 throw new \Exception("invalid group or password!");
+            }
+
+        
+        }
+
+        public function logout(Request $request, Application $app, $key) {
+                //TODO session destroy 
+                    $temp = $this->getDb()->select('t_group', array('gro_temp_key' => $key))
+                    if ($key == null){
+                    throw new \Exception("vous n'etes pas connecté");
+                    } else {
+                    $relatedGroups = $this->getDb()->select('t_group', array('gro_temp_key' => $key));
+                     $db = "UPDATE `t_groupe` SET gro_temp_key = 0 WHERE gro_id = :id";
+                    $this->getDb()->prepare($db);
+                    $this->getDb()->execute(array('id' => $relatedGroups[0]['gro_id']));
+
+                    echo 'vous etes deconneté';
+                    //pour verifier les user restant apres suppression
+
+                    }
+
+        } 
+
 
 
     protected function buildDomainObject($row) {
 
         $groupe = new Group();
 
-        $groupe->groupname($row['gro_id']);
+        $groupe->getGroupname($row['gro_id']);
 
         $groupe->getGroup($row['gro_name']);
 
         $groupe->getPassword($row['gro_password']);
+
+        $groupe->getKey($row['gro_temp_key']);
 
         return $groupe;
 

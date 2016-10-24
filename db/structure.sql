@@ -47,7 +47,10 @@ create table t_groupe (
 
     gro_name varchar(25) not null,
 
-    gro_password varchar(88) not null
+    gro_password varchar(88) not null,
+
+    gro_temp_key integer(3) not null 
+     
 )engine=innodb character set utf8 collate utf8_unicode_ci;
 
 

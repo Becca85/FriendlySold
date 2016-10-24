@@ -3,7 +3,7 @@
 /*getter*/
 	$app->get(
 		/*'/read/group/{id}/money',*/
-        '/',
+        '/read/group/{id}/money',
 	"FriendlySold\Controller\ApiControllerRead::getMoney"
 	)->bind('read_depenses');
 
@@ -26,7 +26,6 @@
 
 	$app->post(
 		'/add/money',
-
 		'FriendlySold\Controller\ApiControllerCreate::addMoney'
 	)->bind('add_depense');
 //Je fais le addUser Rebecca
@@ -59,16 +58,16 @@
     
 
 
-   /* $app->login(
-        '/api/{id}',
+    $app->login(
+        '/api/{name}/{password}',
         'FriendlySold\Controller\ApiController::login'
 
     )->bind('api_login');
 
     $app->logout(
-        '/api/{id}',
+        '/api/{key}',
 
         'FriendlySold\Controller\ApiController::logout'
     )->bind('api_logout');
-*/
+
 

@@ -1,12 +1,12 @@
 /*insert into groups*/
 insert into t_groupe values
-(1, 'mongroupe1','pass1');
+(1, 'mongroupe1','pass1', '0');
 
 insert into t_groupe values
-(2, 'mongroupe2','pass2');
+(2, 'mongroupe2','pass2','0');
 
 insert into t_groupe values
-(3, 'mongroupe3','pass3');
+(3, 'mongroupe3','pass3','0');
 
 
 /* raw password is '@dm1n' */
