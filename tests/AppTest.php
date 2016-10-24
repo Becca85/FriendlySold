@@ -4,6 +4,8 @@ require_once __DIR__.'../../vendor/autoload.php';
 use Silex\WebTestCase;
 use FriendlySold\DAO\UserDAO;
 use FriendlySold\Domain\User;
+use FriendlySold\DAO\GroupDAO;
+use FriendlySold\Domain\group;
 
 class AppTest Extends WebTestCase{
     private $db;
@@ -69,6 +71,34 @@ class AppTest Extends WebTestCase{
         var_dump($result);
         $this->assertTrue(count($result) == 1);
     }
+
+
+//Update test (function save)
+    public function testGroupSaveUpdate(){
+        $dao = new GroupDAO($this->db);
+        $group = new Group;
+        $group->setId(1);
+        $group->setGroupname("mongroupe1");
+        $group->setPassword("pass1");
+        $result = $dao->save($group);
+        echo "Test Group Save Update:\n";
+        var_dump($result);
+        $this->assertTrue(count($result) == 1);
+    }
+
+    //Create test (function save)
+    public function testGroupSaveCreate(){
+        $dao = new GroupDAO($this->db);
+        $group = new group;
+        $group->setGroupname("mopi");
+        $group->setPassword("montrucamoi");
+        $result = $dao->save($group);
+        echo "Test Group Save Create:\n";
+
+        var_dump($result);
+        $this->assertTrue(count($result) == 1);
+    }
+
 
 
 
