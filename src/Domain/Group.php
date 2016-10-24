@@ -5,9 +5,9 @@ namespace FriendlySold\Domain;
 
 
 /**
-* 
+*
 */
-class Group 
+class Group
 {
 
 private $id;

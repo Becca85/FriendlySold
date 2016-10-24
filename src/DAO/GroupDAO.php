@@ -100,7 +100,7 @@ class GroupDAO extends DAO
 
 
     
-      $this->getDb()->delete('t_group', array('gro_id' => $id));
+      $this->getDb()->delete('t_groupe', array('gro_id' => $id));
                 //pour verifier les user ressgtant apres suppression
 
 
