@@ -34,10 +34,10 @@ public function setId($id){
 
 
 /*ici on recupere username*/
-public function groupname(){
+public function getGroupname(){
 
 
-	return $this->grouname;
+	return $this->groupname;
 }
 /*ici on definit ou redefinit username*/
 public function setGroupname($groupname){
