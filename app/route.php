@@ -60,16 +60,16 @@
     
 
 
-    $app->login(
+    $app->getlogin(
         '/api/{name}/{password}',
-        'FriendlySold\Controller\ApiController::login'
+        'FriendlySold\Controller\ApiController::getlogin'
 
     )->bind('api_login');
 
-    $app->logout(
+    $app->getlogout(
         '/api/{key}',
 
-        'FriendlySold\Controller\ApiController::logout'
+        'FriendlySold\Controller\ApiController::getlogout'
     )->bind('api_logout');
 
 

@@ -109,7 +109,7 @@ class GroupDAO extends DAO
     }
     }
 
-        public function login($name, $password){
+        public function getlogin($name, $password){
             //TODO a tester
             $toto = false ;
             $relatedGroups = $this->getDb()->select('t_group', array('gro_name' => $name));
@@ -144,7 +144,7 @@ class GroupDAO extends DAO
         
         }
 
-        public function logout(Request $request, Application $app, $key) {
+        public function getlogout(Request $request, Application $app, $key) {
                 //TODO session destroy 
                     $temp = $this->getDb()->select('t_group', array('gro_temp_key' => $key))
                     if ($key == null){
