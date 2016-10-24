@@ -5,13 +5,13 @@ namespace FriendlySold\Domain;
 
 
 /**
-* 
+*
 */
-class Group 
+class Group
 {
 
 private $id;
-private $getGroupname;
+private $groupname;
 private $password;
 private $key;
 
@@ -33,16 +33,18 @@ public function setId($id){
 
 
 /*ici on recupere username*/
-public function getgetGroupname(){
+
+public function getGroupname(){
 
 
-	return $this->getGroupname;
+	return $this->groupname;
+
 }
 /*ici on definit ou redefinit username*/
-public function setgetGroupname($getGroupname){
+public function setGroupname($groupname){
 
 
-	$this->getGroupname=$getGroupname;
+	$this->groupname=$groupname;
 
 }
 

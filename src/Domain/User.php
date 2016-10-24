@@ -37,7 +37,6 @@ private $group;
 
 
 
-
 	/*ici on recupere l'id*/
 	public function getId(){
 

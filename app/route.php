@@ -3,7 +3,9 @@
 /*getter*/
 	$app->get(
 		/*'/read/group/{id}/money',*/
+
         '/read/group/{id}/money',
+
 	"FriendlySold\Controller\ApiControllerRead::getMoney"
 	)->bind('read_depenses');
 
@@ -28,9 +30,9 @@
 		'/add/money',
 		'FriendlySold\Controller\ApiControllerCreate::addMoney'
 	)->bind('add_depense');
-//Je fais le addUser Rebecca
+//Je fais le addUser Rebecca //
 	$app->post(
-		'/add/user',
+		'api/user/{id}',
 		'FriendlySold\Controller\ApiControllerCreate::addUser'
 	)->bind('add_user');
 

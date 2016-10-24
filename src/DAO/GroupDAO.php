@@ -54,25 +54,44 @@ class GroupDAO extends DAO
     }
     }
 
-    /* public function save(Group , $groupe){
-         $groupeData = array(
-            'gro_name' => $groupe->groupname(),
-            'gro_id' => $groupe->getId(),
-            'gro_password' => $groupe->getPassword()
+    public function save(Group $group){
+               
+        // if my id exist, I update my group table
+        if (!is_null($group->getId())){
+      
+            echo "update:\n";
+            $update = "UPDATE t_groupe SET gro_name=:groupname,gro_password=:grouppassword WHERE gro_id=:groupid";
+            $query = $this->getDb()->prepare($update);
 
+            $query->bindValue(':groupid', $group->getId());
+            $query->bindValue(':groupname', $group->getGroupname());
+            $query->bindValue(':grouppassword', $group->getPassword());
+          
+            $query->execute();
 
-            );
-        if ($groupe->getId()) {
-            // The user has already been saved : update it
-            $this->getDb()->update('t_group', $groupeData, array('usr_id' => $groupe->getId()));
-        } else {
-            // The user has never been saved : insert it
-            $this->getDb()->insert('t_group', $groupeData);
-            // Get the id of the newly created user and set it on the entity.
-            $id = $this->getDb()->lastInsertId();
-            $group->setId($id);
+            if($query->errorCode() != "00000");
+                var_dump($query->errorInfo());
+            return $group;
         }
-    }*/
+
+        // If not, I create a new group
+         else { 
+            echo "create:\n";
+            $create = "INSERT INTO t_groupe(gro_name, gro_password) VALUES (:groupname,:grouppassword)";
+            $query = $this->getDb()->prepare($create);
+
+            $query->bindValue(':groupname', $group->getGroupname());
+            $query->bindValue(':grouppassword', $group->getPassword());
+            
+            $query->execute();
+
+            $group->setId($this->getDb()->lastInsertId());
+            var_dump($group);
+            return $group;
+        } 
+  
+    }
+
 
     public function delete($id){
         if ($id = null){
@@ -81,7 +100,7 @@ class GroupDAO extends DAO
 
 
     
-      $this->getDb()->delete('t_group', array('gro_id' => $id));
+      $this->getDb()->delete('t_groupe', array('gro_id' => $id));
                 //pour verifier les user ressgtant apres suppression
 
 
