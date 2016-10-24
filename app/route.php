@@ -29,9 +29,9 @@
 
 		'FriendlySold\Controller\ApiControllerCreate::addMoney'
 	)->bind('add_depense');
-//Je fais le addUser Rebecca
+//Je fais le addUser Rebecca //
 	$app->post(
-		'/add/user',
+		'api/user/{id}',
 		'FriendlySold\Controller\ApiControllerCreate::addUser'
 	)->bind('add_user');
 
