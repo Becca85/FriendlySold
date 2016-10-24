@@ -117,6 +117,51 @@ class MoneyDAO extends DAO
     }
 
 
+    public function save(Money $money){
+               
+        // if my id exist, I update my money table
+        if (!is_null($money->getId())){
+      
+            echo "update:\n";
+            $update = "UPDATE t_money SET mon_montant=:moneymontant,mon_id_payeur=:moneyidpayeur,mon_date=:moneydate, mon_id_groupe=:moneyidgroupe, mon_description=:moneydescription WHERE mon_id=:moneyid";
+            $query = $this->getDb()->prepare($update);
+
+            $query->bindValue(':moneyid', $money->getId());
+            $query->bindValue(':moneymontant', $money->getMontant());
+            $query->bindValue(':moneyidpayeur', $money->getIdPayeur());
+            $query->bindValue(':moneydate', $money->getDate());
+            $query->bindValue(':moneyidgroupe', $money->getGroup());
+            $query->bindValue(':moneydescription', $money->getDescription());
+          
+            $query->execute();
+
+            if($query->errorCode() != "00000");
+                var_dump($query->errorInfo());
+            return $money;
+        }
+
+        // If not, I create a new money
+         else { 
+            echo "create:\n";
+            $create = "INSERT INTO t_money(mon_montant, mon_id_payeur, mon_date, mon_id_groupe, mon_description) VALUES (:moneymontant,:moneyidpayeur,:moneydate,:moneyidgroupe,:moneydescription)";
+            $query = $this->getDb()->prepare($create);
+
+            
+            $query->bindValue(':moneymontant', $money->getMontant());
+            $query->bindValue(':moneyidpayeur', $money->getIdPayeur());
+            $query->bindValue(':moneydate', $money->getDate());
+            $query->bindValue(':moneyidgroupe', $money->getGroup());
+            $query->bindValue(':moneydescription', $money->getDescription());
+            
+            $query->execute();
+
+            $money->setId($this->getDb()->lastInsertId());
+            var_dump($money);
+            return $money;
+        } 
+  
+    }
+
     /**
 
      * Creates an Article object based on a DB row.
