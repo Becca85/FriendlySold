@@ -31,9 +31,9 @@
 	)->bind('add_depense');
 //Je fais le addUser Rebecca //
 	$app->post(
-		'api/user/{id}',
+		'/save/user',
 		'FriendlySold\Controller\ApiControllerCreate::addUser'
-	)->bind('add_user');
+	)->bind('save_user');
 
 /*delete*/
 /* je fait le delete redfish*/
