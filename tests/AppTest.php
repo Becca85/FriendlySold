@@ -4,10 +4,12 @@ require_once __DIR__.'../../vendor/autoload.php';
 use Silex\WebTestCase;
 use FriendlySold\DAO\UserDAO;
 use FriendlySold\Domain\User;
+
 use FriendlySold\DAO\GroupDAO;
 use FriendlySold\Domain\group;
 use FriendlySold\DAO\MoneyDAO;
 use FriendlySold\Domain\Money;
+
 
 class AppTest Extends WebTestCase{
     private $db;
@@ -46,7 +48,9 @@ class AppTest Extends WebTestCase{
         $this->assertTrue(count($result) == 1);
     }
 
-    //Update test (function save user)
+
+
+    /*//Update test (function save user)
     public function testUserSaveUpdate(){
         $dao = new UserDAO($this->db);
         $user = new user;
@@ -58,8 +62,10 @@ class AppTest Extends WebTestCase{
         echo "Test User Save Update:\n";
         var_dump($result);
         $this->assertTrue(count($result) == 1);
-    }
+    }*/
 
+
+    /*
     //Create test (function save user)
     public function testUserSaveCreate(){
         $dao = new UserDAO($this->db);
@@ -72,7 +78,7 @@ class AppTest Extends WebTestCase{
 
         var_dump($result);
         $this->assertTrue(count($result) == 1);
-    }
+    }*/
 
 
 //Update test (function save group)
@@ -145,6 +151,21 @@ require __DIR__.'/../app/config/dev.php';
         $app->register(new \Silex\Provider\DoctrineServiceProvider());
         $this->db = $app['db'];
         return $app;
+    }
+
+    public function testlogin(){
+                $dao = new GroupDAO($this->db);
+                $result = $dao->login('mongroupe1', 'pass1');     
+                echo "test de login";
+                $temp_key = "SELECT gro_temp_key FROM t_groupe WHERE gro_name = $name";
+                $this->assertTrue(strlen($temp_key) == 3);
+                /*$this->assertTrue($temp_key == $key);*/
+
+
+             
+
+
+
     }
 
 

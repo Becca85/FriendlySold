@@ -3,7 +3,9 @@
 /*getter*/
 	$app->get(
 		/*'/read/group/{id}/money',*/
-       '/read/group/{id}/money',
+
+        '/read/group/{id}/money',
+
 	"FriendlySold\Controller\ApiControllerRead::getMoney"
 	)->bind('read_depenses');
 
@@ -25,7 +27,6 @@
 		'/save/group',
 		'FriendlySold\Controller\ApiControllerCreate::addGroup'
 	)->bind('add_group');
-
 
 	$app->post(
 		'/save/money',
@@ -59,19 +60,12 @@
 
 
 /*log in&out*/
-    
-
-
-   /* $app->login(
-        '/api/{id}',
+    $app->post(
+        '/login/',
         'FriendlySold\Controller\ApiController::login'
-
     )->bind('api_login');
 
-    $app->logout(
-        '/api/{id}',
-
-        'FriendlySold\Controller\ApiController::logout'
+    $app->post(
+        '/logout',
+        'FriendlySold\Controller\ApiController::getlogout'
     )->bind('api_logout');
-*/
-

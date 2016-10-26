@@ -1,7 +1,6 @@
 <?php
 
 namespace FriendlySold\Controller;
-
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 use FriendlySold\Domain\User;
