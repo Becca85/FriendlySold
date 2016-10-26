@@ -18,18 +18,21 @@
 		'/read/group/{group_id}/group',
 		'FriendlySold\Controller\ApiControllerRead::getGroups'
 	)->bind('read_groups');
+
+
 /*setter*/
 	$app->post(
-		'/add/group',
+		'/save/group',
 		'FriendlySold\Controller\ApiControllerCreate::addGroup'
 	)->bind('add_group');
 
-	$app->post(
-		'/add/money',
 
+	$app->post(
+		'/save/money',
 		'FriendlySold\Controller\ApiControllerCreate::addMoney'
 	)->bind('add_depense');
-//Je fais le addUser Rebecca //
+
+
 	$app->post(
 		'/save/user',
 		'FriendlySold\Controller\ApiControllerCreate::addUser'
