@@ -13,20 +13,19 @@ class Group
 private $id;
 private $groupname;
 private $password;
+private $key;
 
 
 
 /*ici on recupere l'id*/
 public function getId(){
-
-
-	return $this->id;
+    return $this->id;
 }
 /*ici in definit ou redefinit l'id*/
 public function setId($id){
 
 
-	$this->id=$id;
+    $this->id=$id;
 }
 
 
@@ -34,16 +33,18 @@ public function setId($id){
 
 
 /*ici on recupere username*/
+
 public function getGroupname(){
 
 
-	return $this->groupname;
+    return $this->groupname;
+
 }
 /*ici on definit ou redefinit username*/
 public function setGroupname($groupname){
 
 
-	$this->groupname=$groupname;
+    $this->groupname=$groupname;
 
 }
 
@@ -53,13 +54,13 @@ public function setGroupname($groupname){
 public function getGroup(){
 
 
-	return $this->group;
+    return $this->group;
 }
 /*ici on definit ou redefinit group*/
 public function setGroup($group){
 
 
-	$this->group=$group;
+    $this->group=$group;
 
 }
 
@@ -67,15 +68,31 @@ public function setGroup($group){
 public function getPassword(){
 
 
-	return $this->password;
+    return $this->password;
 }
 /*ici on definit ou redefinit color*/
 public function setPassword($password){
 
 
-	$this->password=$password;
+    $this->password=$password;
 
 }
+
+
+public function getKey(){
+
+    return $this->key;
+
+
+}
+
+public function setKey(){
+
+    $this->key=$key;
+
+}
+
+
 }
 
 
