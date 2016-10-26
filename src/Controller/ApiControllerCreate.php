@@ -14,27 +14,30 @@ Class APIControllerCreate {
 
 		try{
                 $user = new User;
+                echo "hello!!!!!!!";
+
 
                 // methode pour récupérer et decoder le format json
                 $data = json_decode($request->getContent(), true);
+                 var_dump($data);
                 $request->request->replace(is_array($data) ? $data : array());
 
                 var_dump($request->request);
 
-                //if ($request->request->has('username') && $request->request->has('usergroup') && $request->request->has('usercolor')) {
-                  /*  if ($request->request->has('Id')) 
-                        $user->setId($request->request->get('Id'));*/
-                    $user->setUsername($request->request->get('username'));
-                    $user->setGroup($request->request->get('usergroup'));
-                    $user->setColor($request->request->get('usercolor'));
-                /*}
+                if ($request->request->has('username') && $request->request->has('usergroup') && $request->request->has('usercolor')) {
+                if ($request->request->has('Id')) 
+                    $user->setId($request->request->get('Id'));
+                $user->setUsername($request->request->get('username'));
+                $user->setGroup($request->request->get('usergroup'));
+                $user->setColor($request->request->get('usercolor'));
+                }
                 else {
                     return $app->json(array(
                     'records' => [],
                     'status' => 'KO',
                     'error' => 'error',
                     ), 400);
-                }*/
+                }
 
                 //TODO
                 $users = $app['UserDAO']->save($user);
