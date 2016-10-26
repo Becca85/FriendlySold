@@ -60,14 +60,13 @@
     
 
 
-    $app->login(
-        '/api/{name}/{password}',
+    $app->post(
+        '/login/',
         'FriendlySold\Controller\ApiController::login'
-
     )->bind('api_login');
 
-    $app->logout(
-        '/api/{key}',
+    $app->post(
+        '/logout',
 
         'FriendlySold\Controller\ApiController::logout'
     )->bind('api_logout');

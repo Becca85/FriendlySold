@@ -109,14 +109,19 @@ class GroupDAO extends DAO
     }
     }
 
-        public function login($name, $password){
+        public function login(){
             //TODO a tester
             $toto = false ;
-            $relatedGroups = $this->getDb()->select('t_group', array('gro_name' => $name));
+            $relatedGroups = $db = "SELECT * FROM t_groupe WHERE gro_name = ?";
+            $this->getDb()->prepare($db);
+            $this->getDb()->execute(array('id' => $relatedGroups[0]['gro_name']));
             /*TODO faire peter une exeption*/
             var_dump($relatedGroups);
-            if ($password == $relatedGroups[0]['gro_password'] ) {
-                $toto = true ;
+            if ($password == $db = "SELECT * FROM t_groupe WHERE gro_password = ?");
+                $this->getDb()->prepare($db);
+                $this->getDb()->execute(array('id' => $relatedGroups[0]['gro_password']));
+                $toto = true;
+                {
                 if($toto == true){
                     $key = rand(100, 999);
                     var_dump($this->db);
@@ -146,7 +151,7 @@ class GroupDAO extends DAO
 
         public function logout(Request $request, Application $app, $key) {
                 //TODO session destroy 
-                    $temp = $this->getDb()->select('t_group', array('gro_temp_key' => $key))
+                    $temp = $this->getDb()->select('t_group', array('gro_temp_key' => $key));
                     if ($key == null){
                     throw new \Exception("vous n'etes pas connecté");
                     } else {
@@ -168,9 +173,9 @@ class GroupDAO extends DAO
 
         $groupe = new Group();
 
-        $groupe->getGroupname($row['gro_id']);
+        $groupe->getGroup($row['gro_id']);
 
-        $groupe->getGroup($row['gro_name']);
+        $groupe->getGroupname($row['gro_name']);
 
         $groupe->getPassword($row['gro_password']);
 

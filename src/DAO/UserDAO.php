@@ -144,7 +144,7 @@ class UserDAO extends DAO
 
         $user->setGroup($row['usr_id_groupe']);
 
-         $user->setColor($row['usr_couleur']);
+        $user->setColor($row['usr_couleur']);
 
         return $user;
 

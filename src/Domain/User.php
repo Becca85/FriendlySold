@@ -93,6 +93,7 @@ private $group;
 			$this->id = $id;
 			return $this;
 		}
+		
 		public function setName($name) {
 			$name = (string) $name;
 			$length = strlen($name);
@@ -100,6 +101,7 @@ private $group;
 			$this->name = $name;
 			return $this;
 		}
+		
 		public function setColor($color) {
 			$color = (string) $color;
 			$length = strlen($color);
