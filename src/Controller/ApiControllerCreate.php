@@ -5,32 +5,31 @@ namespace FriendlySold\Controller;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 use FriendlySold\Domain\User;
+use FriendlySold\Domain\Group;
 //cd /enchant_dict_check(dict, word);
 
 Class APIControllerCreate {
 
-
+    // fonction pour ajouter et mettre a jour un utilisateur
 	public function addUser(Request $request, Application $app){
 
 		try{
                 $user = new User;
-                echo "hello!!!!!!!";
-
-
+                
                 // methode pour récupérer et decoder le format json
                 $data = json_decode($request->getContent(), true);
-                 var_dump($data);
                 $request->request->replace(is_array($data) ? $data : array());
 
-                var_dump($request->request);
-
+                // on verifie que nous avons bien toute les valeurs dont nous avons besoin
                 if ($request->request->has('username') && $request->request->has('usergroup') && $request->request->has('usercolor')) {
                 if ($request->request->has('Id')) 
+                //on hydrate notre objet (cad on donne les valeurs aux attributs)
                     $user->setId($request->request->get('Id'));
                 $user->setUsername($request->request->get('username'));
                 $user->setGroup($request->request->get('usergroup'));
                 $user->setColor($request->request->get('usercolor'));
                 }
+                // message d'erreur en json 
                 else {
                     return $app->json(array(
                     'records' => [],
@@ -39,8 +38,9 @@ Class APIControllerCreate {
                     ), 400);
                 }
 
-                //TODO
+                //on appelle la fontion Save de UserDAO
                 $users = $app['UserDAO']->save($user);
+                // on affiche le resultat en json
                 $result = array(
                 	"id"=>$user->getId(),
                 	"username"=> $user->getUsername()
@@ -58,14 +58,61 @@ Class APIControllerCreate {
                     'error' => $e->getMessage()
                 ), 400);
         
-	}
+	   }
+    }
 
-    /*public function addMoney($id, Application $app  ){
-            throw new \Exception("TODO");
+   // fonction pour ajouter et mettre a jour un utilisateur
+    public function addGroup(Request $request, Application $app){
+
+        try{
+                $group = new Group;
+                
+                // methode pour récupérer et decoder le format json
+                $data = json_decode($request->getContent(), true);
+                $request->request->replace(is_array($data) ? $data : array());
+
+                // on verifie que nous avons bien toute les valeurs dont nous avons besoin
+                if ($request->request->has('groupname') && $request->request->has('password') && $request->request->has('key')) {
+                if ($request->request->has('Id')) 
+                //on hydrate notre objet (cad on donne les valeurs aux attributs)
+                    $group->setId($request->request->get('Id'));
+                $group->setGroupname($request->request->get('groupname'));
+                $group->setPassword($request->request->get('password'));
+                $group->setKey($request->request->get('key'));
+                }
+                // message d'erreur en json 
+                else {
+                    return $app->json(array(
+                    'records' => [],
+                    'status' => 'KO',
+                    'error' => 'error',
+                    ), 400);
+                }
+
+                //on appelle la fontion Save de UserDAO
+                $groups = $app['GroupDAO']->save($group);
+                // on affiche le resultat en json
+                $result = array(
+                    "id"=>$group->getId(),
+                    "groupname"=> $group->getGroupname()
+                    );
+                return $app->json(array(
+                'records' => $result,
+                'status' => 'OK'
+                ), 200);
+            }
+            
+        catch(Exception $e){
+                return $app->json(array(
+                    'records' => [],
+                    'status' => 'KO',
+                    'error' => $e->getMessage()
+                ), 400);
+        
         }
-    public function addGroup($id, Application $app  ){
+
+    }
+}
+        /*public function addGroup($id, Application $app  ){
             throw new \Exception("TODO");
         }*/
-
-}
-}
