@@ -60,6 +60,7 @@
     
 
 
+
     $app->post(
         '/login/',
         'FriendlySold\Controller\ApiController::login'
@@ -67,8 +68,7 @@
 
     $app->post(
         '/logout',
-
-        'FriendlySold\Controller\ApiController::logout'
+        'FriendlySold\Controller\ApiController::getlogout'
     )->bind('api_logout');
 
 

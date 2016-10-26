@@ -2,7 +2,7 @@
 
 namespace FriendlySold\Controller;
 
-Class APIControllerCreate {
+Class ApiControllerCreate {
 
 
 	public function addUser($id, Application $app){
