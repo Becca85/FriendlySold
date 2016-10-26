@@ -15,7 +15,6 @@
 		"FriendlySold\Controller\ApiControllerRead::getUsers"
 	)->bind('read_users');
 
-//jefais getUsers Juliette <3 //
     $app->get(
 		'/read/group/{group_id}/group',
 		'FriendlySold\Controller\ApiControllerRead::getGroups'
@@ -39,8 +38,6 @@
 		'FriendlySold\Controller\ApiControllerCreate::addUser'
 	)->bind('save_user');
 
-/*delete*/
-/* je fait le delete redfish*/
 	$app->delete(
 		'/api/group/{id}',
 		'FriendlySold\Controller\ApiControllerDelete::deleteGroup'
