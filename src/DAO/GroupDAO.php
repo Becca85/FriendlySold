@@ -120,36 +120,56 @@ class GroupDAO extends DAO
 
     public function login($request){
 
-        //TODO a tester
+        //TODO session start
         $data = json_decode($request->getContent(), true);
         var_dump($data);
 
-        $toto = false ;
+        
         $relatedGroups = "SELECT * FROM t_groupe WHERE gro_name =:groupname AND gro_password =:password;";
-        var_dump($relatedGroups);
+        
         $query = $this->getDb()->prepare($relatedGroups);
         $query->execute(array(
             'groupname' => $data['groupname'],
             'password' => $data['password']));
+           $record = $query->fetchAll();
 
-        if($relatedGroups = null){
+        print_r($record)  ; 
+
+        if(count($record) < 1){
 
             throw new Exception("login group or password is invalid", 1);
         } 
+        else 
+
+        {
+
+            $login = 'vous etes connecté';
+            echo $login ;
+                   
+            /*ajout de la clé de login*/
+            $key = rand(100, 999);
+        $db = "UPDATE `t_groupe` SET gro_temp_key = $key WHERE gro_name = :groupname";
+                $query = $this->getDb()->prepare($relatedGroups);
+                $query->execute(array(
+                    'groupname' => $data['groupname']));
+
+         }
 
         /*TODO faire peter une exeption*/
         
          var_dump($query->fetchAll());
      }
+
+      /* $loginkey = true;
          
-       /*$toto = true;
-                if($toto == true)
+                if($loginkey == true)
                 {
 
                     $key = rand(100, 999);
                     var_dump($this->db);
+                    var_dump($key);
                     //$relatedGroups[0]['gro_id']
-                    $db = "UPDATE `t_groupe` SET gro_temp_key = $key WHERE gro_id = :id";
+                    /*$db = "UPDATE `t_groupe` SET gro_temp_key = $key WHERE gro_id = :id";
                     $this->getDb()->prepare($db);
                     $this->getDb()->execute(array('id' => $relatedGroups[0]['gro_id']));
 
