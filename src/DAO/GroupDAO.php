@@ -51,7 +51,7 @@ class GroupDAO extends DAO
         else
             throw new \Exception("No group matching id " . $id . ".");
 
-    }
+        }
     }
 
     public function save(Group $group){
@@ -106,25 +106,46 @@ class GroupDAO extends DAO
 
         
 
+        }
     }
-    }
+
+    /*syntax des parametres a donné a rest*/
+/* 
+{
+"groupname" : "mongroupe1",
+"password" : "pass1"
+}
+*/
 
 
-        public function login(){
+    public function login($request){
 
-            //TODO a tester
-            $toto = false ;
-            $relatedGroups = $db = "SELECT * FROM t_groupe WHERE gro_name = ?";
-            $this->getDb()->prepare($db);
-            $this->getDb()->execute(array('id' => $relatedGroups[0]['gro_name']));
-            /*TODO faire peter une exeption*/
-            var_dump($relatedGroups);
-            if ($password == $db = "SELECT * FROM t_groupe WHERE gro_password = ?");
-                $this->getDb()->prepare($db);
-                $this->getDb()->execute(array('id' => $relatedGroups[0]['gro_password']));
-                $toto = true;
+        //TODO a tester
+        $data = json_decode($request->getContent(), true);
+        var_dump($data);
+
+        $toto = false ;
+        $relatedGroups = "SELECT * FROM t_groupe WHERE gro_name =:groupname AND gro_password =:password;";
+        var_dump($relatedGroups);
+        $query = $this->getDb()->prepare($relatedGroups);
+        $query->execute(array(
+            'groupname' => $data['groupname'],
+            'password' => $data['password']));
+
+        if($relatedGroups = null){
+
+            throw new Exception("login group or password is invalid", 1);
+        } 
+
+        /*TODO faire peter une exeption*/
+        
+         var_dump($query->fetchAll());
+     }
+         
+       /*$toto = true;
+                if($toto == true)
                 {
-                if($toto == true){
+
                     $key = rand(100, 999);
                     var_dump($this->db);
                     //$relatedGroups[0]['gro_id']
@@ -135,21 +156,16 @@ class GroupDAO extends DAO
                     return $app->json(array(
                         'record'=> $key ,
                         'status'=> 'ok' ,
-                        'error'=> $e-> getMessage()
-
-
-                        ), 200);
-
-
-
-
-                }
-            } else {
+                        'error'=> $e-> getMessage()), 200);
+             if($toto== false) {
                  throw new \Exception("invalid group or password!");
             }
+                }*/
+
+
 
         
-        }
+        
 
         public function getlogout(Request $request, Application $app, $key) {
                 //TODO session destroy 
@@ -167,7 +183,7 @@ class GroupDAO extends DAO
 
                     }
 
-        } 
+} 
 
 
 
@@ -187,3 +203,5 @@ class GroupDAO extends DAO
 
     }
 }
+
+
