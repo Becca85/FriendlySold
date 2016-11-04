@@ -32,8 +32,8 @@ id => $depense->$ getid();*/
                 'status' => 'OK'
 			), 200);
     }
-    public function getlogout($key, Application $app){
-        $users = $app['GroupDAO']->logout($key);
+    public function logout( Request $request, Application $app){
+        $users = $app['GroupDAO']->logout($request);
         return $app->json(array(
 				'records' => $result,
                 'status' => 'OK'

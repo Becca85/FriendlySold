@@ -67,8 +67,8 @@
     )->bind('api_login');
 
     $app->post(
-        '/logout',
-        'FriendlySold\Controller\ApiController::getlogout'
+        '/logout/',
+        'FriendlySold\Controller\ApiController::logout'
     )->bind('api_logout');
 
 

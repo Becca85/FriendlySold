@@ -117,10 +117,11 @@ class GroupDAO extends DAO
 }
 */
 
+    /*login start*/
 
     public function login($request){
 
-        //TODO session start
+        
         $data = json_decode($request->getContent(), true);
         var_dump($data);
 
@@ -149,47 +150,54 @@ class GroupDAO extends DAO
             /*ajout de la clé de login*/
             $key = rand(100, 999);
         $db = "UPDATE `t_groupe` SET gro_temp_key = $key WHERE gro_name = :groupname";
-                $query = $this->getDb()->prepare($relatedGroups);
-                $query->execute(array(
-                    'groupname' => $data['groupname']));
+                $query = $this->getDb()->prepare($db);
+                $query->execute(array( 'groupname' => $data['groupname']));
+                
 
          }
 
-        /*TODO faire peter une exeption*/
         
-         var_dump($query->fetchAll());
+        
+         /*var_dump($query->fetchAll());*/
      }
 
-      /* $loginkey = true;
-         
-                if($loginkey == true)
-                {
-
-                    $key = rand(100, 999);
-                    var_dump($this->db);
-                    var_dump($key);
-                    //$relatedGroups[0]['gro_id']
-                    /*$db = "UPDATE `t_groupe` SET gro_temp_key = $key WHERE gro_id = :id";
-                    $this->getDb()->prepare($db);
-                    $this->getDb()->execute(array('id' => $relatedGroups[0]['gro_id']));
-
-                    return $app->json(array(
-                        'record'=> $key ,
-                        'status'=> 'ok' ,
-                        'error'=> $e-> getMessage()), 200);
-             if($toto== false) {
-                 throw new \Exception("invalid group or password!");
-            }
-                }*/
+       /*login end */
 
 
 
-        
+        /*logout start*/
         
 
-        public function getlogout(Request $request, Application $app, $key) {
-                //TODO session destroy 
-                    $temp = $this->getDb()->select('t_group', array('gro_temp_key' => $key));
+        public function logout($request, $app) {
+                
+                   
+                    $recordkey = "SELECT gro_temp_key FROM t_groupe WHERE gro_name = :groupname";
+                    $query = $this->getDb()->prepare($recordkey);
+                    $query->execute(array(
+                    'groupname' => $data['groupname']));
+                    $recordkey = $query->fetchAll();
+                         
+
+                         if ($recordkey != null){
+
+                        $key = 0;
+                        $db = "UPDATE `t_groupe` SET gro_temp_key = $key WHERE gro_name = :gro_name";
+                        $query = $this->getDb()->prepare($db);
+                        $query = $this->getDb()->execute(array());
+                        echo $key;
+                    } /*else {
+
+                        echo $key.'You are not connected !';
+
+                    //throw new \Exception("vous n'etes pas connecté");
+
+                        }*/
+
+                    }
+
+/*logout old with juliette*/
+
+                   /* $temp = $this->getDb()->select('t_group', array('gro_temp_key' => $key));
                     if ($key == null){
                     throw new \Exception("vous n'etes pas connecté");
                     } else {
@@ -198,12 +206,10 @@ class GroupDAO extends DAO
                     $this->getDb()->prepare($db);
                     $this->getDb()->execute(array('id' => $relatedGroups[0]['gro_id']));
 
-                    echo 'vous etes deconneté';
+                    echo 'vous etes deconneté';*/
                     //pour verifier les user restant apres suppression
 
-                    }
 
-} 
 
 
 
