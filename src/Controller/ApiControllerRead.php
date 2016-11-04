@@ -32,7 +32,7 @@
                     'records' => [],
                     'status' => 'KO',
                     'error' => $e->getMessage()
-                ), 200);
+                ), 400);
 
             }
 
@@ -44,13 +44,13 @@
 
         public function getGroups($group_id, Application $app  ){
             try {
-                $users = $app['GroupDAO']->find($group_id);
+                $key = $app['GroupDAO']->find($group_id);
             } catch(Exception $e){
                 return $app->json(array(
                     'records' => [],
                     'status' => 'KO',
                     'error' => $e->getMessage()
-                ), 200);
+                ), 400);
 
             }
 

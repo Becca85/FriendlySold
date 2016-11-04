@@ -132,34 +132,32 @@ class GroupDAO extends DAO
         $query->execute(array(
             'groupname' => $data['groupname'],
             'password' => $data['password']));
-           $record = $query->fetchAll();
+        $record = $query->fetchAll();
 
         print_r($record)  ; 
 
         if(count($record) < 1){
 
-            throw new Exception("login group or password is invalid", 1);
+            throw new \Exception("The parameters given is invalid", 1);
         } 
-        else 
-
-        {
+        else {
 
             $login = 'vous etes connecté';
             echo $login ;
                    
             /*ajout de la clé de login*/
             $key = rand(100, 999);
-        $db = "UPDATE `t_groupe` SET gro_temp_key = $key WHERE gro_name = :groupname";
-                $query = $this->getDb()->prepare($db);
-                $query->execute(array( 'groupname' => $data['groupname']));
-                
+            $db = "UPDATE `t_groupe` SET gro_temp_key = $key WHERE gro_name = :groupname";
+            $query = $this->getDb()->prepare($db);
+            $query->execute(array( 'groupname' => $data['groupname']));
+            return $key;
 
          }
 
         
         
          /*var_dump($query->fetchAll());*/
-     }
+    }
 
        /*login end */
 
@@ -168,32 +166,37 @@ class GroupDAO extends DAO
         /*logout start*/
         
 
-        public function logout($request, $app) {
+        public function logout($request) {
                 
-                   
-                    $recordkey = "SELECT gro_temp_key FROM t_groupe WHERE gro_name = :groupname";
-                    $query = $this->getDb()->prepare($recordkey);
-                    $query->execute(array(
-                    'groupname' => $data['groupname']));
-                    $recordkey = $query->fetchAll();
-                         
+            $data = json_decode($request->getContent(), true);
 
-                         if ($recordkey != null){
+            $recordkey = "SELECT gro_temp_key FROM t_groupe WHERE gro_name = :groupname";
+            $query = $this->getDb()->prepare($recordkey);
+            $query->execute(array(
+            'groupname' => $data['groupname']));
+            $recordkeyreq = $query->fetchAll();
+             
+            // print_r($recordkeyreq);                
 
-                        $key = 0;
-                        $db = "UPDATE `t_groupe` SET gro_temp_key = $key WHERE gro_name = :gro_name";
-                        $query = $this->getDb()->prepare($db);
-                        $query = $this->getDb()->execute(array());
-                        echo $key;
-                    } /*else {
+            if (count($recordkeyreq)!=0){
 
-                        echo $key.'You are not connected !';
+                
+                $db = "UPDATE t_groupe SET gro_temp_key = 0 WHERE gro_name = :gro_name";
+                $query = $this->getDb()->prepare($db);
+                $query->execute(array(
+                    'gro_name' => $data['groupname']));
+                echo $key;
+            } 
 
-                    //throw new \Exception("vous n'etes pas connecté");
+            else{
 
-                        }*/
+                //echo ('You are not connected !');
 
-                    }
+                throw new Exception("un probleme est survenue");
+
+            }
+
+        }
 
 /*logout old with juliette*/
 
