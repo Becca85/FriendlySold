@@ -95,10 +95,7 @@ class GroupDAO extends DAO {
 		if ($id == null) 
 			throw new \Exception("id null ");
 		else {
-			$query = "DELETE FROM t_groupe WHERE gro_id=:id";
-			$query = $this->getDb()->prepare($query);
-			$query->bindValue(':id', $id);
-			$query->execute();
+			$this->getDb()->delete('t_groupe', array('gro_id' => $id));
 		}
 	}
 	
