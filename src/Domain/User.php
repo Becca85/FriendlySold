@@ -77,6 +77,9 @@ class User
 		$this->group=$group;
 	}
 
+
+ 
+
     /*public function setId($id) { //erreurs de redeclaration suite a la function en double
 			$id = (int) $id;
 			if ($id <= 0) return NULL;
