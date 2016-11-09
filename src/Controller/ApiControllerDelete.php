@@ -5,6 +5,7 @@ use Symfony\Component\HttpFoundation\Request;
 use FriendlySold\Domain\User;
 
 class ApiControllerDelete {
+	
 	/**
 	* API Delete details controller.
 	*
@@ -17,15 +18,13 @@ class ApiControllerDelete {
 		try {
 			$app['UserDAO']->delete($id);
 		}
-		catch(Exception $e) {
+		catch(\Exception $e) {
 			return $app->json(array(
-				'records' => [],
 				'status' => 'KO',
 				'error' => $e->getMessage()
 			), 200);
 		}
 		return $app->json(array(
-			'records' => $result,
 			'status' => 'OK'
 		), 200);
 	}
@@ -35,9 +34,8 @@ class ApiControllerDelete {
 		try {
 			$app['GroupDAO']->delete($id);
 		}
-		catch(Exception $e) {
+		catch(\Exception $e) {
 			return $app->json(array(
-				'records' => [],
 				'status' => 'KO',
 				'error' => $e->getMessage()
 			), 200);
@@ -46,26 +44,20 @@ class ApiControllerDelete {
 			'status' => 'OK'
 		), 200);
 	}
-
-
-	public function deleteMoney($id, Application $app){
-
-            try{
-                $users = $app['MoneyDAO']->delete($id);
-            }catch(Exception $e){
-                return $app->json(array(
-                    'records' => [],
-                    'status' => 'KO',
-                    'error' => $e->getMessage()
-                ), 200);
-
-            }
-
+	
+	public function deleteMoney($id, Application $app) {
+		try {
+			$app['MoneyDAO']->delete($id);
+		}
+		catch(\Exception $e) {
 			return $app->json(array(
-				'records' => $result,
-                'status' => 'OK'
+				'status' => 'KO',
+				'error' => $e->getMessage()
 			), 200);
-        }
-
+		}		
+		return $app->json(array(
+			'status' => 'OK'
+		), 200);
+	}
+	
 }
-

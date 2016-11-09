@@ -27,21 +27,15 @@ class MoneyDAO extends DAO {
 		}
 	} */
 
-    /**
-     * Removes an article from the database.
-     *
-     * @param integer $id The article id.
-     */
-    public function delete($id) {
-        if ($id == null){
-             throw new \Exception("id null ");
-        } else {
-
-        // Delete the article
-        $this->getDb()->delete('t_money', array('mon_id' => $id));
-    }
-    }
-
+	/**
+	* Removes an article from the database.
+	*
+	* @param integer $id The article id.
+	*/
+	public function delete($id) {
+		if ($this->find($id))
+			$this->getDb()->delete('t_money', array('mon_id' => $id));
+	}
 
      /**
 
@@ -61,9 +55,9 @@ class MoneyDAO extends DAO {
 		if ($id == null)
 			throw new \Exception("id null ");
 		else {
-			$db = "select * from t_money where mon_id=?";
+			$db = "select * from t_money where mon_id='$id'";
 			$row = $this->getDb()->fetchAssoc($db, array($id));
-			if (!is_null($row))
+			if ($row)
 				return $this->buildDomainObject($row);
 			else
 				throw new \Exception("No money matching id " . $id);
