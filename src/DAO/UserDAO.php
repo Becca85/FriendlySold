@@ -42,9 +42,13 @@ class UserDAO extends DAO
         } else {
 
         $db = "SELECT * FROM t_user WHERE usr_id='$id'";
-        $row = $this->getDb()->fetchAssoc($db, array($id));
-        if ($row) {
-            return $this->buildDomainObject($row);
+            $dbh = $this->getDb()->prepare($db);
+            $dbh->execute();
+            $row = $dbh->fetchAll();
+
+        if ($row !=null) {
+             return $row;
+
 
         } else {
             throw new \Exception("No user matching id " . $id ."."); }
