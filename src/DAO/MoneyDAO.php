@@ -55,10 +55,10 @@ class MoneyDAO extends DAO {
 		if ($id == null)
 			throw new \Exception("id null ");
 		else {
-			$db = "select * from t_money where mon_id='$id'";
-			$row = $this->getDb()->fetchAssoc($db, array($id));
-			if ($row)
-				return $this->buildDomainObject($row);
+			$sql = "SELECT * FROM t_money WHERE mon_id='$id'";
+			$result = $this->getDb()->fetchAssoc($sql, array($id));
+			if ($result)
+				return $this->buildDomainObject($result);
 			else
 				throw new \Exception("No money matching id " . $id);
     	}
@@ -70,7 +70,7 @@ class MoneyDAO extends DAO {
 	* @return array A list of all articles.
 	*/
 	public function findAll() {
-		$sql = "select * from t_money order by mon_id";
+		$sql = "SELECT * FROM t_money ORDER BY mon_id";
 		$result = $this->getDb()->fetchAll($sql);
 		// Convert query result to an array of domain objects
 		$articles = array();

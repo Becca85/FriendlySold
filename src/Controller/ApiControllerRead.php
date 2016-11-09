@@ -33,7 +33,7 @@ use FriendlySold\Domain\Money;
                 $users = $app['MoneyDAO']->find($id);
             }catch(\Exception $e){
                 return $app->json(array(
-                    'records' => [],
+                    'records' => [$users],
                     'status' => 'KO',
                     'error' => $e->getMessage()
                 ), 400);
