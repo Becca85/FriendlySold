@@ -77,12 +77,12 @@ class User
 		$this->group=$group;
 	}
 
-    public function setId($id) {
+    /*public function setId($id) {
 			$id = (int) $id;
 			if ($id <= 0) return NULL;
 			$this->id = $id;
 			return $this;
-		}
+		}*/
 		
 		public function setName($name) {
 			$name = (string) $name;

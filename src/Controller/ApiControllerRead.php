@@ -1,8 +1,12 @@
 <?php
 
-	namespace FriendlySold\Controller;
-
-	use Silex\Application;
+namespace FriendlySold\Controller;
+use Silex\Application;
+use Symfony\Component\HttpFoundation\Request;
+use FriendlySold\Domain\User;
+use FriendlySold\Domain\Group;
+use FriendlySold\Domain\Money;
+	
 
 
 	class APIControllerRead {
@@ -27,7 +31,7 @@
         public function getMoney($id, Application $app  ){
             try{
                 $users = $app['MoneyDAO']->find($id);
-            }catch(Exception $e){
+            }catch(\Exception $e){
                 return $app->json(array(
                     'records' => [],
                     'status' => 'KO',
