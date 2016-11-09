@@ -13,7 +13,9 @@ use FriendlySold\Domain\Money;
 
 		public function getUsers($id, Application $app) {
 			try{
-                $users = $app['UserDAO']->find($id);
+                $user = $app['UserDAO']->find($id);
+            //$reponse = this->buildUserArray($user);
+            return $app->json($user);
             }catch(Exception $e){
                 return $app->json(array(
                     'records' => [],
@@ -23,11 +25,20 @@ use FriendlySold\Domain\Money;
 
             }
 
-			return $app->json(array(
-				'records' => $result,
-                'status' => 'OK'
-			), 200);
+			/*$result = [];
+					$result[] = array(
+						'id' => $user->getId(),
+						'username' => $user->getUserName(),
+						'usergroup' => $group->getGroup(),
+						'usercolor' => $user->getColor()
+					);
+
+				return $app->json(array(
+					'records' => $result,
+					'status' => 'OK'
+				), 200);*/
         }
+
         public function getMoney($id, Application $app  ){
             try{
                 $users = $app['MoneyDAO']->find($id);
@@ -63,5 +74,15 @@ use FriendlySold\Domain\Money;
                 'status' => 'OK'
 			), 200);
         }
+
+        private function buildUserArray(array $user) {
+       $data = array(
+           'id' => $user->getId(),
+           'username' => $user->getUserName(),
+           'usergroup' => $group->getGroup(),
+           'usercolor' => $user->getColor()
+           );
+       return $data;
+   }
     }
 
