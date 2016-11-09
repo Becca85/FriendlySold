@@ -163,15 +163,18 @@ class MoneyDAO extends DAO {
 
     }
 
-    public function toJSONStructure(Money $money){
+    public function toJSONStructure(Array $moneys){
         $jsonResult=[];
+        foreach ($moneys as $key => $money) {
+            $jsonResult[$key] = [];
+            $jsonResult[$key]["Id"] = $money->getId();
+            $jsonResult[$key]["montant"] = $money->getMontant();
+            $jsonResult[$key]["payeur"] = $money->getIdPayeur();
+            $jsonResult[$key]["date"] = $money->getDate();
+            $jsonResult[$key]["groupe"] = $money->getGroup();
+            $jsonResult[$key]["description"] = $money->getDescription();
+        }
 
-        $jsonResult["Id"] = $money->getId();
-        $jsonResult["montant"] = $money->getMontant();
-        $jsonResult["payeur"] = $money->getIdPayeur();
-        $jsonResult["date"] = $money->getDate();
-        $jsonResult["groupe"] = $money->getGroup();
-        $jsonResult["description"] = $money->getDescription();
 
         return $jsonResult;
                 

@@ -32,7 +32,9 @@ use FriendlySold\Domain\Money;
         public function getMoney($id, Application $app  ){
             try{
                 $money = $app['MoneyDAO']->find($id);
-                $jsonMoney = $app['MoneyDAO']->toJSONStructure($money);
+                $m = [];
+                array_push($m, $money);
+                $jsonMoney = $app['MoneyDAO']->toJSONStructure($m);
             }
             catch(\Exception $e){
                 return $app->json(array(
