@@ -36,7 +36,7 @@ use FriendlySold\Domain\Money;
                     'records' => [],
                     'status' => 'KO',
                     'error' => $e->getMessage()
-                ), 200);
+                ), 400);
 
             }
 
@@ -48,13 +48,13 @@ use FriendlySold\Domain\Money;
 
         public function getGroups($group_id, Application $app  ){
             try {
-                $users = $app['GroupDAO']->find($group_id);
+                $key = $app['GroupDAO']->find($group_id);
             } catch(Exception $e){
                 return $app->json(array(
                     'records' => [],
                     'status' => 'KO',
                     'error' => $e->getMessage()
-                ), 200);
+                ), 400);
 
             }
 

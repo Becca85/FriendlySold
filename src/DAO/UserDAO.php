@@ -102,24 +102,21 @@ class UserDAO extends DAO
   
     }
 
-    /*public function delete($id){
-        
-    $db = "DELETE FROM `t_user` WHERE `usr_id` = $id";
-
-    }*/
-
-   public function delete($id){
-       if ($id = null){
-             throw new \Exception("id null ");
-        } else {
-
-
-      $this->getDb()->delete('t_user', array('usr_id' => $id));
-                //pour verifier les user ressgtant apres suppression
-
-            
-        }
-   }
+	/*public function delete($id){
+	
+	$db = "DELETE FROM `t_user` WHERE `usr_id` = $id";
+	
+	}*/
+	
+	public function delete($id){
+		if ($id == null){
+			throw new \Exception("id null ");
+		} 
+		else {
+			$this->getDb()->delete('t_user', array('usr_id' => $id));
+			//pour verifier les user ressgtant apres suppression	
+		}
+	}
 
 
    /**
