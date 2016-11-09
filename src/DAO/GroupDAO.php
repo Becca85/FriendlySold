@@ -41,8 +41,8 @@ class GroupDAO extends DAO {
 	public function find($id){
 		if ($id == null) {
 			throw new \Exception("id null ");
-		} else {
-			
+		}
+		else {
 			$db = "SELECT * FROM t_groupe WHERE gro_id='$id'";
 			$row = $this->getDb()->fetchAssoc($db, array($id));
 			if ($row)
@@ -92,11 +92,8 @@ class GroupDAO extends DAO {
 
 
 	public function delete($id) {
-		if ($id == null) 
-			throw new \Exception("id null ");
-		else {
+		if ($this->find($id))
 			$this->getDb()->delete('t_groupe', array('gro_id' => $id));
-		}
 	}
 	
 	/*syntax des parametres a donné a rest*/
