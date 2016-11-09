@@ -39,10 +39,11 @@ class UserDAO extends DAO
     public function find($id){
         if ($id == null){
              throw new \Exception("id null ");
+
         } else {
 
         $db = "SELECT * FROM t_user WHERE usr_id= $id";
-        $row = $this->getDb()->fetchAssoc($db, array($id));
+        $row = $this->getDb()->fetchAll($db, array());
         if ($row) {
             return $this->buildDomainObject($row);
 

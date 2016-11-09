@@ -140,7 +140,13 @@ class GroupDAO extends DAO
 
             throw new \Exception("The parameters given is invalid", 1);
         } 
-        else {
+        else if($record == null){
+
+
+            throw new \Exception("The parameters given is invalid", 1);
+
+
+        } else {
 
             $login = 'vous etes connecté';
             echo $login ;
