@@ -41,7 +41,7 @@ class MoneyDAO extends DAO
      */
     public function delete($id) {
         if ($id == null){
-             throw new \Exception("id null ");
+             throw new \Exception("id inexistant ");
         } else {
 
         // Delete the article
@@ -66,7 +66,7 @@ class MoneyDAO extends DAO
 
     public function find($id) {
         if ($id == null){
-             throw new \Exception("id null ");
+             throw new \Exception("id inexistant ");
         } else {
         $db = "select * from t_money where mon_id=?";
 

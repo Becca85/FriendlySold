@@ -41,7 +41,7 @@ class UserDAO extends DAO
              throw new \Exception("id null ");
         } else {
 
-        $db = "SELECT * FROM t_user WHERE usr_id='$id'";
+        $db = "SELECT * FROM t_user WHERE usr_id= $id";
         $row = $this->getDb()->fetchAssoc($db, array($id));
         if ($row) {
             return $this->buildDomainObject($row);
@@ -56,6 +56,8 @@ class UserDAO extends DAO
         $db = "SELECT usr_couleur FROM t_user WHERE usr_id= $id";
       $result = $this->getDb()->fetchAll($db);
                 return $result;
+
+                
         }
 
         

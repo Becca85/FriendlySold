@@ -21,7 +21,7 @@ class ApiControllerDelete {
                     'records' => [],
                     'status' => 'KO',
                     'error' => $e->getMessage()
-                ), 200);
+                ), 400);
 
             }
 
@@ -40,7 +40,7 @@ class ApiControllerDelete {
                     'records' => [],
                     'status' => 'KO',
                     'error' => $e->getMessage()
-                ), 200);
+                ), 400);
 
             }
 
@@ -60,7 +60,7 @@ class ApiControllerDelete {
                     'records' => [],
                     'status' => 'KO',
                     'error' => $e->getMessage()
-                ), 200);
+                ), 400);
 
             }
 

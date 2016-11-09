@@ -95,13 +95,13 @@ class GroupDAO extends DAO
 
     public function delete($id){
         if ($id = null){
-             throw new \Exception("id null ");
+             throw new \Exception("id inexistant ");
         } else {
 
 
     
       $this->getDb()->delete('t_groupe', array('gro_id' => $id));
-                //pour verifier les user ressgtant apres suppression
+                //pour verifier les user exisstant apres suppression
 
 
         
