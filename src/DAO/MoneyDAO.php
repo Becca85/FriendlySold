@@ -55,10 +55,14 @@ class MoneyDAO extends DAO {
 		if ($id == null)
 			throw new \Exception("id null ");
 		else {
-			$sql = "SELECT * FROM t_money WHERE mon_id='$id'";
-			$result = $this->getDb()->fetchAssoc($sql, array($id));
-			if ($result)
-				return $this->buildDomainObject($result);
+			$sql = "SELECT * FROM t_money WHERE mon_id=:id";
+            $dbh = $this->getDb()->prepare($sql);
+            $dbh->execute(array('id'=>$id));
+			$result = $dbh->fetchAll();
+			if (count($result)>0){
+                $mon = $this->buildDomainObject($result[0]);
+				return $mon;
+            }
 			else
 				throw new \Exception("No money matching id " . $id);
     	}
@@ -143,20 +147,34 @@ class MoneyDAO extends DAO {
 
         $MoneyDAO = new Money();
 
-        $MoneyDAO->getId($row['mon_id']);
+        $MoneyDAO->setId($row['mon_id']);
 
-        $MoneyDAO->getMontant($row['mon_montant']);
+        $MoneyDAO->setMontant($row['mon_montant']);
 
-        $MoneyDAO->getIdPayeur($row['mon_id_payeur']);
+        $MoneyDAO->setIdPayeur($row['mon_id_payeur']);
 
-        $MoneyDAO->getDate($row['mon_date']);
+        $MoneyDAO->setDate($row['mon_date']);
 
-        $MoneyDAO->getGroup($row['mon_id_groupe']);
+        $MoneyDAO->setGroup($row['mon_id_groupe']);
 
-        $MoneyDAO->getDescription($row['mon_description']);
+        $MoneyDAO->setDescription($row['mon_description']);
 
         return $MoneyDAO;
 
+    }
+
+    public function toJSONStructure(Money $money){
+        $jsonResult=[];
+
+        $jsonResult["Id"] = $money->getId();
+        $jsonResult["montant"] = $money->getMontant();
+        $jsonResult["payeur"] = $money->getIdPayeur();
+        $jsonResult["date"] = $money->getDate();
+        $jsonResult["groupe"] = $money->getGroup();
+        $jsonResult["description"] = $money->getDescription();
+
+        return $jsonResult;
+                
     }
 
 }
