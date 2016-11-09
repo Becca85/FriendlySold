@@ -7,11 +7,10 @@ namespace FriendlySold\DAO;
 use FriendlySold\Domain\Group;
 
 
-class GroupDAO extends DAO
-{
-	public function findAll(){
-
-        $db= "SELECT * FROM t_groupe order by gro_id";
+class GroupDAO extends DAO {
+	
+	public function findAll() {
+		$db= "SELECT * FROM t_groupe order by gro_id";
 		$result =  $this->getDb()->fetchAll($db);
 		//Convertir en tableau, l'objet que l'on recupère de la base de donnée
 		$tableau_db=array();
@@ -21,6 +20,7 @@ class GroupDAO extends DAO
 		}
 		return $tableau_db;
 	}
+
 
 
     public function findByGroup($group){
@@ -104,20 +104,60 @@ class GroupDAO extends DAO
                 //pour verifier les user exisstant apres suppression
 
 
-        
 
-        }
-    }
+	public function save(Group $group){
+		
+		// if my id exist, I update my group table
+		if (!is_null($group->getId())){
+			
+			echo "update:\n";
+			$update = "UPDATE t_groupe SET gro_name=:groupname,gro_password=:grouppassword WHERE gro_id=:groupid";
+			$query = $this->getDb()->prepare($update);
+			
+			$query->bindValue(':groupid', $group->getId());
+			$query->bindValue(':groupname', $group->getGroupname());
+			$query->bindValue(':grouppassword', $group->getPassword());
+			
+			$query->execute();
+			
+			if($query->errorCode() != "00000");
+			var_dump($query->errorInfo());
+			return $group;
+		}
+		
+		// If not, I create a new group
+		else { 
+			echo "create:\n";
+			$create = "INSERT INTO t_groupe(gro_name, gro_password) VALUES (:groupname,:grouppassword)";
+			$query = $this->getDb()->prepare($create);
+			
+			$query->bindValue(':groupname', $group->getGroupname());
+			$query->bindValue(':grouppassword', $group->getPassword());
+			
+			$query->execute();
+			
+			$group->setId($this->getDb()->lastInsertId());
+			var_dump($group);
+			return $group;
+		}
+	}
 
-    /*syntax des parametres a donné a rest*/
-/* 
-{
-"groupname" : "mongroupe1",
-"password" : "pass1"
-}
-*/
+
+	public function delete($id) {
+		if ($this->find($id))
+			$this->getDb()->delete('t_groupe', array('gro_id' => $id));
+	}
+	
+	/*syntax des parametres a donné a rest*/
+	/* 
+	{
+	"groupname" : "mongroupe1",
+	"password" : "pass1"
+	}
+	*/
 
     /*login start*/
+
 
     public function login($request){
 
@@ -204,20 +244,6 @@ class GroupDAO extends DAO
 
         }
 
-/*logout old with juliette*/
-
-                   /* $temp = $this->getDb()->select('t_group', array('gro_temp_key' => $key));
-                    if ($key == null){
-                    throw new \Exception("vous n'etes pas connecté");
-                    } else {
-                    $relatedGroups = $this->getDb()->select('t_group', array('gro_temp_key' => $key));
-                     $db = "UPDATE `t_groupe` SET gro_temp_key = 0 WHERE gro_id = :id";
-                    $this->getDb()->prepare($db);
-                    $this->getDb()->execute(array('id' => $relatedGroups[0]['gro_id']));
-
-                    echo 'vous etes deconneté';*/
-                    //pour verifier les user restant apres suppression
-
 
 
 
@@ -240,3 +266,4 @@ class GroupDAO extends DAO
 }
 
 
+	 

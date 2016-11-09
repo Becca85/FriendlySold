@@ -9,7 +9,7 @@
 	"FriendlySold\Controller\ApiControllerRead::getMoney"
 	)->bind('read_depenses');
 
-	$app->match(
+	$app->get(
         /*read/group/{id}/users**/
 		'read/group/{id}/users',
 		"FriendlySold\Controller\ApiControllerRead::getUsers"
