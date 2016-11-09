@@ -33,22 +33,21 @@ class ApiControllerDelete {
 
 
 	public function deleteGroup($id, Application $app) {
-            try {
-                $users = $app['GroupDAO']->delete($id);
-            } catch(Exception $e){
-                return $app->json(array(
-                    'records' => [],
-                    'status' => 'KO',
-                    'error' => $e->getMessage()
-                ), 200);
-
-            }
-
+		try {
+			var_dump($id);
+			$app['GroupDAO']->delete($id);
+		}
+		catch(Exception $e) {
 			return $app->json(array(
-				'records' => $result,
-                'status' => 'OK'
+				'records' => [],
+				'status' => 'KO',
+				'error' => $e->getMessage()
 			), 200);
-        }
+		}
+		return $app->json(array(
+			'status' => 'OK'
+		), 200);
+	}
 
 
 	public function deleteMoney($id, Application $app){
