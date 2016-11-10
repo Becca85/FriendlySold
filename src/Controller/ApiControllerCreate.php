@@ -94,7 +94,8 @@ Class APIControllerCreate {
                 // on affiche le resultat en json
                 $result = array(
                     "id"=>$group->getId(),
-                    "groupname"=> $group->getGroupname()
+                    "groupname"=> $group->getGroupname(),
+                    "key"=>$group->getKey()
                     );
                 return $app->json(array(
                 'records' => $result,

@@ -84,7 +84,7 @@ class GroupDAO extends DAO {
 		if (!is_null($group->getId())){
 			
 			echo "update:\n";
-			$update = "UPDATE t_groupe SET gro_name=:groupname,gro_password=:grouppassword,gro_temp_key=:key WHERE gro_id=:groupid";
+			$update = "UPDATE t_groupe SET gro_name=:groupname,gro_password=:grouppassword,gro_temp_key= :key WHERE gro_id=:groupid";
 			$query = $this->getDb()->prepare($update);
 			
 			$query->bindValue(':groupid', $group->getId());
@@ -102,11 +102,12 @@ class GroupDAO extends DAO {
 		// If not, I create a new group
 		else { 
 			echo "create:\n";
-			$create = "INSERT INTO t_groupe(gro_name, gro_password) VALUES (:groupname,:grouppassword)";
+			$create = "INSERT INTO t_groupe(gro_name, gro_password,gro_temp_key) VALUES (:groupname,:grouppassword, 0)";
 			$query = $this->getDb()->prepare($create);
 			
 			$query->bindValue(':groupname', $group->getGroupname());
 			$query->bindValue(':grouppassword', $group->getPassword());
+            
 			
 			$query->execute();
 			
