@@ -39,58 +39,29 @@ class GroupDAO extends DAO {
     }
 
 
-    public function find($id){
-        if ($id == null) {
-             throw new \Exception("id null ");
-        } else {
-
-        $db = "SELECT * FROM t_groupe WHERE gro_id='$id'";
-        $row = $this->getDb()->fetchAssoc($db, array($id));
-        if ($row)
-            return $this->buildDomainObject($row);
-        else
-            throw new \Exception("No group matching id " . $id . ".");
-
-        }
-    }
-
-    public function save(Group $group){
-               
-        // if my id exist, I update my group table
-        if (!is_null($group->getId())){
-      
-            echo "update:\n";
-            $update = "UPDATE t_groupe SET gro_name=:groupname,gro_password=:grouppassword WHERE gro_id=:groupid";
-            $query = $this->getDb()->prepare($update);
-
-            $query->bindValue(':groupid', $group->getId());
-            $query->bindValue(':groupname', $group->getGroupname());
-            $query->bindValue(':grouppassword', $group->getPassword());
-          
-            $query->execute();
-
-            if($query->errorCode() != "00000");
-                var_dump($query->errorInfo());
-            return $group;
-        }
-
-        // If not, I create a new group
-         else { 
-            echo "create:\n";
-            $create = "INSERT INTO t_groupe(gro_name, gro_password) VALUES (:groupname,:grouppassword)";
-            $query = $this->getDb()->prepare($create);
-
-            $query->bindValue(':groupname', $group->getGroupname());
-            $query->bindValue(':grouppassword', $group->getPassword());
+   public function find($id) {
+               if ($id == null)
+            throw new \Exception("id null ");
+                else {
+            $sql = "SELECT * FROM t_groupe WHERE gro_id=:id";
+            $dbh = $this->getDb()->prepare($sql);
+            $dbh->execute(array('id'=>$id));
+            $result = $dbh->fetchAll();
             
-            $query->execute();
+            if (count($result)>0){
+            
+                $gro = $this->buildDomainObject($result[0]);
+                return $gro;
+                
+            }
+            
+            else
+                throw new \Exception("No user matching id " . $id);
+        }
 
-            $group->setId($this->getDb()->lastInsertId());
-            var_dump($group);
-            return $group;
-        } 
-  
     }
+
+   
 
 
     public function delete($id){
@@ -103,7 +74,9 @@ class GroupDAO extends DAO {
       $this->getDb()->delete('t_groupe', array('gro_id' => $id));
                 //pour verifier les user exisstant apres suppression
 
+  }
 
+}
 
 	public function save(Group $group){
 		
@@ -143,18 +116,7 @@ class GroupDAO extends DAO {
 	}
 
 
-	public function delete($id) {
-		if ($this->find($id))
-			$this->getDb()->delete('t_groupe', array('gro_id' => $id));
-	}
 	
-	/*syntax des parametres a donné a rest*/
-	/* 
-	{
-	"groupname" : "mongroupe1",
-	"password" : "pass1"
-	}
-	*/
 
     /*login start*/
 
@@ -222,7 +184,7 @@ class GroupDAO extends DAO {
             'groupname' => $data['groupname']));
             $recordkeyreq = $query->fetchAll();
              
-            // print_r($recordkeyreq);                
+                         
 
             if (count($recordkeyreq)!=0){
 
@@ -252,16 +214,31 @@ class GroupDAO extends DAO {
 
         $groupe = new Group();
 
-        $groupe->getGroup($row['gro_id']);
+        $groupe->setId($row['gro_id']);
 
-        $groupe->getGroupname($row['gro_name']);
+        $groupe->setGroupname($row['gro_name']);
 
-        $groupe->getPassword($row['gro_password']);
+        $groupe->setPassword($row['gro_password']);
 
-        $groupe->getKey($row['gro_temp_key']);
+        $groupe->setKey($row['gro_temp_key']);
 
         return $groupe;
 
+    }
+
+    public function toJSONStructure(Array $group){
+        $jsonResult=[];
+        foreach ($group as $key => $group) {
+            $jsonResult[$key] = [];
+            $jsonResult[$key]["Id"] = $group->getId();
+            $jsonResult[$key]["name"] = $group->getGroupname();
+            $jsonResult[$key]["password"] = $group->getPassword();
+            $jsonResult[$key]["key"] = $group->getKey();
+        }
+
+
+        return $jsonResult;
+                
     }
 }
 

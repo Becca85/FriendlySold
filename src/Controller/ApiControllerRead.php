@@ -59,10 +59,15 @@ use FriendlySold\Domain\Money;
 			), 200);
         }
 
-        public function getGroups($group_id, Application $app  ){
-            try {
-                $key = $app['GroupDAO']->find($group_id);
-            } catch(\Exception $e){
+        public function getGroups($id, Application $app) {
+            try{
+
+                $group = $app['GroupDAO']->find($id);
+                $g = [];
+                array_push($g, $group);
+                $jsonGroupe = $app['GroupDAO']->toJSONStructure($g);
+            }
+            catch(\Exception $e){
                 return $app->json(array(
                     'records' => [],
                     'status' => 'KO',
@@ -70,12 +75,14 @@ use FriendlySold\Domain\Money;
                 ), 400);
 
             }
+          //  error_log($result);
+            return $app->json(array(
 
-			return $app->json(array(
-				'records' => $result,
+                'records' => $jsonGroupe,
                 'status' => 'OK'
-			), 200);
+            ), 200);
         }
+
 
         private function buildUserArray(array $user) {
        $data = array(

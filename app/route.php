@@ -16,7 +16,7 @@
 	)->bind('read_users');
 
     $app->get(
-		'/read/group/{group_id}/group',
+		'/read/group/{id}/group',
 		'FriendlySold\Controller\ApiControllerRead::getGroups'
 	)->bind('read_groups');
 

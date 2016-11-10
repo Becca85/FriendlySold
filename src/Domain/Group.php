@@ -40,7 +40,7 @@ class Group
 
     /*ici on recupere group*/
     public function getGroup(){
-        return $this->group;
+        return $this->groupname;
     }
 
 
@@ -56,7 +56,7 @@ class Group
 
         return $this->password;
     }
-    /*ici on definit ou redefinit color*/
+    /*ici on definit le pass*/
     public function setPassword($password){
 
 
@@ -72,7 +72,7 @@ class Group
 
     }
 
-    public function setKey(){
+    public function setKey($key){
 
         $this->key=$key;
 
