@@ -13,26 +13,26 @@ use FriendlySold\Domain\Money;
 
 		public function getUsers($id, Application $app) {
 			try{
+
                 $user = $app['UserDAO']->find($id);
-
-            //$reponse = this->buildUserArray($user);
-            return $app->json($user);
-
-            }catch(\Exception $e){
+                $u = [];
+                array_push($u, $user);
+                $jsonUser = $app['UserDAO']->toJSONStructure($u);
+            }
+            catch(\Exception $e){
                 return $app->json(array(
-                    'records' => [$row['usr_id']],
+                    'records' => [],
                     'status' => 'KO',
                     'error' => $e->getMessage()
                 ), 400);
 
             }
+          //  error_log($result);
+            return $app->json(array(
 
-
-			return $app->json(array(
-                'records' => $user,
+                'records' => $jsonUser,
                 'status' => 'OK'
-			), 200);
-
+            ), 200);
         }
 
         public function getMoney($id, Application $app  ){
@@ -81,7 +81,7 @@ use FriendlySold\Domain\Money;
        $data = array(
            'id' => $user->getId(),
            'username' => $user->getUserName(),
-           'usergroup' => $group->getGroup(),
+           'usergroup' => $user->getGroup(),
            'usercolor' => $user->getColor()
            );
        return $data;

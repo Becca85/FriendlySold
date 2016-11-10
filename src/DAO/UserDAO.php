@@ -36,27 +36,23 @@ class UserDAO extends DAO
     }
 
     
-    public function find($id){
-        if ($id == null){
-             throw new \Exception("id null ");
+            public function find($id) {
+               if ($id == null)
+            throw new \Exception("id null ");
+                else {
+            $sql = "SELECT * FROM t_user WHERE usr_id=:id";
+            $dbh = $this->getDb()->prepare($sql);
+            $dbh->execute(array('id'=>$id));
+            $result = $dbh->fetchAll();
+            if (count($result)>0){
+                $usr = $this->buildDomainObject($result[0]);
+                return $usr;
+            }
+            
+            else
+                throw new \Exception("No user matching id " . $id);
+        }
 
-        } else {
-
-
-        $db = "SELECT * FROM t_user WHERE usr_id='$id'";
-            $dbh = $this->getDb()->prepare($db);
-            $dbh->execute();
-            $row = $dbh->fetchAll();
-
-        if ($row !=null) {
-             return $row;
-
-
-
-        } else {
-            throw new \Exception("No user matching id " . $id ."."); }
-
-    }
     }
 
     public function getColorName($id){
@@ -149,5 +145,20 @@ class UserDAO extends DAO
 
         return $user;
 
+    }
+
+    public function toJSONStructure(Array $user){
+        $jsonResult=[];
+        foreach ($user as $key => $user) {
+            $jsonResult[$key] = [];
+            $jsonResult[$key]["Id"] = $user->getId();
+            $jsonResult[$key]["name"] = $user->getUsername();
+            $jsonResult[$key]["groupe"] = $user->getGroup();
+            $jsonResult[$key]["couleur"] = $user->getColor();
+        }
+
+
+        return $jsonResult;
+                
     }
 }
