@@ -5,6 +5,7 @@ use Symfony\Component\HttpFoundation\Request;
 use FriendlySold\Domain\User;
 
 class ApiControllerDelete {
+
 	
 	/**
 	* API Delete details controller.
@@ -19,6 +20,7 @@ class ApiControllerDelete {
 			$app['UserDAO']->delete($id);
 		}
 		catch(\Exception $e) {
+
 			return $app->json(array(
 				'status' => 'KO',
 				'error' => $e->getMessage()
@@ -31,14 +33,17 @@ class ApiControllerDelete {
 
 
 	public function deleteGroup($id, Application $app) {
+
 		try {
 			$app['GroupDAO']->delete($id);
 		}
 		catch(\Exception $e) {
+
 			return $app->json(array(
 				'status' => 'KO',
 				'error' => $e->getMessage()
 			), 200);
+
 		}
 		return $app->json(array(
 			'status' => 'OK'
@@ -50,6 +55,7 @@ class ApiControllerDelete {
 			$app['MoneyDAO']->delete($id);
 		}
 		catch(\Exception $e) {
+
 			return $app->json(array(
 				'status' => 'KO',
 				'error' => $e->getMessage()

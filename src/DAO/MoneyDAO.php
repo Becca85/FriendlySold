@@ -2,6 +2,7 @@
 namespace FriendlySold\DAO;
 use FriendlySold\Domain\Money;
 
+
 class MoneyDAO extends DAO {
 	
 	/**
@@ -37,6 +38,7 @@ class MoneyDAO extends DAO {
 			$this->getDb()->delete('t_money', array('mon_id' => $id));
 	}
 
+
      /**
 
      * Returns an article matching the supplied id.
@@ -50,6 +52,7 @@ class MoneyDAO extends DAO {
      * @return \MicroCMS\Domain\Article|throws an exception if no matching article is found
 
      */
+
 
 	public function find($id) {
 		if ($id == null)
@@ -66,6 +69,7 @@ class MoneyDAO extends DAO {
 			else
 				throw new \Exception("No money matching id " . $id);
     	}
+
     }
 	
 	/**
