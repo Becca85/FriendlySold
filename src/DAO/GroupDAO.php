@@ -59,12 +59,13 @@ class GroupDAO extends DAO {
 		if (!is_null($group->getId())){
 			
 			echo "update:\n";
-			$update = "UPDATE t_groupe SET gro_name=:groupname,gro_password=:grouppassword WHERE gro_id=:groupid";
+			$update = "UPDATE t_groupe SET gro_name=:groupname,gro_password=:grouppassword,gro_temp_key=:key WHERE gro_id=:groupid";
 			$query = $this->getDb()->prepare($update);
 			
 			$query->bindValue(':groupid', $group->getId());
 			$query->bindValue(':groupname', $group->getGroupname());
 			$query->bindValue(':grouppassword', $group->getPassword());
+			$query->bindValue(':key', $group->getKey());
 			
 			$query->execute();
 			
